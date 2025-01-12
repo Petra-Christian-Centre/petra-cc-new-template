@@ -85,7 +85,7 @@ export default function SermonSlider() {
               </div>
               
               <div className="mt-4">
-                <h4 className="text-[#FF6B4A] text-lg font-jedira-regular">{sermon.date}</h4>
+                <h4 className="text-[#FF6B4A] text-lg">{sermon.date}</h4>
                 {/* <h3 className="text-xl font-bold mt-2">{sermon.title}</h3> */}
               </div>
             </div>

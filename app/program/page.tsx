@@ -4,7 +4,7 @@ import Link from "next/link";
 import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
 import rcimage from "@/public/Images/rcimage.png";
-import Sermons from '@/components/Sermons';
+import Sermons from "@/components/Sermons";
 
 export default function ProgramPage() {
   const programs = [
@@ -50,7 +50,7 @@ export default function ProgramPage() {
       <div className="w-full max-w-7xl mx-auto px-4 mt-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Left Column - Programs List (30%) */}
-          <div className="md:col-span-4 border border-[#EAE6E6] py-10 px-5 rounded-lg">
+          <div className="md:col-span-4 border border-[#EAE6E6] py-6 px-5 rounded-lg">
             <h2 className="text-3xl font-bold mb-4 text-black">Our programs</h2>
             <p className="text-gray-600 mb-8">
               You are next to be transformed! Stay updated on the ministries
@@ -107,7 +107,9 @@ export default function ProgramPage() {
                   <p className="text-[16px] text-black font-[400]">
                     Next Schedule
                   </p>
-                  <p className="text-[16px] text-black font-[500]">July, 2025</p>
+                  <p className="text-[16px] text-black font-[500]">
+                    July, 2025
+                  </p>
                 </div>
               </div>
             </div>
@@ -137,7 +139,10 @@ export default function ProgramPage() {
           </div>
         </div>
       </div>
-      <Sermons />
+
+      <div className="w-full px-4 mt-32 bg-white pt-20">
+        <Sermons />
+      </div>
     </>
   );
 }
