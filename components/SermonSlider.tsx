@@ -21,11 +21,23 @@ const sermonData = [
     duration: "1:18:03",
     thumbnail: "/Images/mysteries.png",
   },
+  {
+    title: "MYSTERIES OF THE KINGDOM 3",
+    date: "SAT 21ST OCT",
+    duration: "1:18:03",
+    thumbnail: "/Images/mysteries.png",
+  },
+  {
+    title: "MYSTERIES OF THE KINGDOM 4",
+    date: "SAT 22ND OCT",
+    duration: "1:18:03",
+    thumbnail: "/Images/mysteries.png",
+  },
 ];
 
 export default function SermonSlider() {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <style jsx global>
         {`
           .swiper {
@@ -34,10 +46,10 @@ export default function SermonSlider() {
           }
           .swiper-wrapper {
             display: flex;
+            align-items: stretch;
           }
           .swiper-slide {
-            flex-shrink: 0;
-            width: auto;
+            width: 535px !important;
             height: auto;
           }
           .swiper-button-prev,
@@ -50,25 +62,17 @@ export default function SermonSlider() {
       <Swiper
         modules={[Navigation]}
         spaceBetween={24}
-        slidesPerView={1}
+        slidesPerView="auto"
         navigation={{
           prevEl: '.custom-swiper-button-prev',
           nextEl: '.custom-swiper-button-next',
         }}
-        breakpoints={{
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        }}
         className="w-full"
       >
         {sermonData.map((sermon, index) => (
-          <SwiperSlide key={index} className="w-full">
-            <div className="relative group w-full">
-              <div className="relative aspect-video rounded-lg overflow-hidden w-[535px] h-[286px]">
+          <SwiperSlide key={index}>
+            <div className="relative group">
+              <div className="relative rounded-lg overflow-hidden w-[535px] h-[286px]">
                 <Image
                   src={sermon.thumbnail}
                   alt={sermon.title}
@@ -81,7 +85,7 @@ export default function SermonSlider() {
               </div>
               
               <div className="mt-4">
-                <h4 className="text-[#FF6B4A] text-lg">{sermon.date}</h4>
+                <h4 className="text-[#FF6B4A] text-lg font-jedira-regular">{sermon.date}</h4>
                 {/* <h3 className="text-xl font-bold mt-2">{sermon.title}</h3> */}
               </div>
             </div>
@@ -90,13 +94,13 @@ export default function SermonSlider() {
       </Swiper>
 
       <div className="flex justify-end gap-4 mt-8">
-        <button className="custom-swiper-button-prev w-12 h-12 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <button className="custom-swiper-button-prev w-12 h-12 rounded-full border border-black flex items-center justify-center hover:bg-black transition-colors group">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2" className="group-hover:stroke-white">
             <path d="M15 19l-7-7 7-7" />
           </svg>
         </button>
-        <button className="custom-swiper-button-next w-12 h-12 rounded-full border border-black flex items-center justify-center hover:bg-black hover:text-white transition-colors">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <button className="custom-swiper-button-next w-12 h-12 rounded-full border border-black flex items-center justify-center hover:bg-black transition-colors group">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" strokeWidth="2" className="group-hover:stroke-white">
             <path d="M9 5l7 7-7 7" />
           </svg>
         </button>

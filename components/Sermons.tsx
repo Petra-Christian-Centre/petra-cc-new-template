@@ -12,7 +12,7 @@ const SermonSlider = dynamic(() => import("./SermonSlider"), {
 
 export default function Sermons() {
   return (
-    <section className="w-full mx-auto max-w-7xl px-4 py-16 flex items-center justify-between">
+    <section className="w-full mx-auto max-w-7xl px-4 py-16 flex items-start justify-between">
       <div className="w-2/6">
         <SermonHeader />
       </div>
