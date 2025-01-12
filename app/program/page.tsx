@@ -4,6 +4,7 @@ import Link from "next/link";
 import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
 import rcimage from "@/public/Images/rcimage.png";
+import Sermons from '@/components/Sermons';
 
 export default function ProgramPage() {
   const programs = [
@@ -136,6 +137,7 @@ export default function ProgramPage() {
           </div>
         </div>
       </div>
+      <Sermons />
     </>
   );
 }
