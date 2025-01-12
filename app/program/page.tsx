@@ -5,6 +5,7 @@ import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
 import rcimage from "@/public/Images/rcimage.png";
 import Sermons from "@/components/Sermons";
+import ListenNow from "@/components/ListenNow";
 
 export default function ProgramPage() {
   const programs = [
@@ -142,6 +143,9 @@ export default function ProgramPage() {
 
       <div className="w-full px-4 mt-32 bg-white pt-20">
         <Sermons />
+      </div>
+      <div className="w-full px-4 mt-32">
+        <ListenNow/>
       </div>
     </>
   );
