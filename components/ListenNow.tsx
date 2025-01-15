@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import AudioPlayer from './AudioPlayer';
+import { MdHeadsetMic } from 'react-icons/md';
+import listenicon from "@/public/Images/listenicons.png"
 
 interface Sermon {
   id: string;
@@ -27,6 +29,33 @@ const sermons: Sermon[] = [
   {
     id: '2',
     title: 'Mysteries of the Kingdom',
+    preacher: 'Pastor Ayo Ajani',
+    date: '25th July, 2024',
+    duration: '2h:46m',
+    audioUrl: '/audio/sample2.mp3',
+    thumbnail: '/Images/sermon-thumb.jpg',
+  },
+  {
+    id: '3',
+    title: 'Soul Safari',
+    preacher: 'Pastor Ayo Ajani',
+    date: '25th July, 2024',
+    duration: '2h:46m',
+    audioUrl: '/audio/sample2.mp3',
+    thumbnail: '/Images/sermon-thumb.jpg',
+  },
+  {
+    id: '4',
+    title: 'But God- When mercy Steps in',
+    preacher: 'Pastor Ayo Ajani',
+    date: '25th July, 2024',
+    duration: '2h:46m',
+    audioUrl: '/audio/sample2.mp3',
+    thumbnail: '/Images/sermon-thumb.jpg',
+  },
+  {
+    id: '5',
+    title: 'Sure Mercies of David',
     preacher: 'Pastor Ayo Ajani',
     date: '25th July, 2024',
     duration: '2h:46m',
@@ -58,14 +87,9 @@ export default function ListenNow() {
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
           <div className="w-10 h-10 relative">
-            <Image
-              src="/Images/headphones-icon.png"
-              alt="Listen Now"
-              fill
-              className="object-contain"
-            />
+           <MdHeadsetMic color='#FA6C41' size={58}/>
           </div>
-          <h2 className="text-3xl font-semibold">Listen Now</h2>
+          <h2 className="text-[48px] font-jedira-regular text-black ml-4">Listen Now</h2>
         </div>
         <p className="text-gray-600 max-w-md">
           Ditch the low life and dive into the deep end, exploring the possibilities of your new life in Christ
@@ -73,16 +97,16 @@ export default function ListenNow() {
       </div>
 
       {/* Sermons List */}
-      <div className="space-y-4">
+      <div className="space-y-4 bg-[#F7F8F8] py-10 px-10 rounded-[12px] mt-20">
         {sermons.map((sermon) => (
           <div
             key={sermon.id}
             className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors"
           >
             {/* Thumbnail */}
-            <div className="relative w-16 h-16 flex-shrink-0">
+            <div className="relative w-14 h-14 flex-shrink-0">
               <Image
-                src={sermon.thumbnail}
+                src={listenicon}
                 alt={sermon.title}
                 fill
                 className="object-cover rounded-lg"
@@ -91,9 +115,9 @@ export default function ListenNow() {
 
             {/* Sermon Info */}
             <div className="flex-grow">
-              <h3 className="font-semibold">{sermon.title}</h3>
-              <p className="text-sm text-gray-500">{sermon.preacher}</p>
-              <div className="flex items-center gap-4 text-sm text-gray-500">
+              <h3 className="font-semibold text-black">{sermon.title}</h3>
+              <p className="text-sm text-[#4F4F4F]">{sermon.preacher}</p>
+              <div className="flex items-center gap-4 text-sm text-[#4F4F4F]">
                 <span>{sermon.date}</span>
                 <span>{sermon.duration}</span>
               </div>
