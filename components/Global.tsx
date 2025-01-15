@@ -7,7 +7,7 @@ export default function Global() {
   return (
     <div className="w-full relative mt-32">
       {/* Container with background color */}
-      <div className="bg-[#F5DFD1] w-full max-w-7xl mx-auto">
+      <div className="bg-[#F5DFD1] w-full max-w-7xl mx-auto rounded-[20px]">
         {/* Radial gradient container */}
         <div 
           className="w-full min-h-[456px] relative rounded-[24px] mx-auto max-w-[1368px]"
