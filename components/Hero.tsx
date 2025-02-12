@@ -19,8 +19,7 @@ const Hero = () => {
             <p className="text-lg md:mt-4 hidden md:block">
               Led by Pastor Ayo Ajani
             </p>
-
-            {/* Apply Now Section */}
+            
             <div className=" bg-gray-300 md:bg-white px-1 flex rounded-[32px] md:rounded-full md:hidden flex-col items-start">
               <span className="px-4 py-4 text-center md:text-left w-full">
                 Be a part of Tribe Petra School of Ministry
@@ -51,7 +50,40 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <div className='flex-1 flex min-h-full p-2'>
+
+        <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 md:mt-0 md:w-[400px]">
+            
+            <Link href="/apply" className="bg-[#2F4F4F] p-6 h-[143px] rounded-2xl text-white md:col-span-2">
+              <div className="flex items-center justify-between">
+                <div>
+                  <h3 className="text-2xl font-medium">Visit Pastor Ayo&apos;s</h3>
+                  <p className="text-2xl">Website</p>
+                </div>
+                <span className="text-2xl bg-[#3A7475] flex justify-center items-center font-bold rounded-lg size-[72px] font-jedira-regular">
+                  a.a
+                </span>
+              </div>
+            </Link>
+
+            
+            <Link href={"/..."} className="bg-[#4A4A4A] p-6 rounded-2xl text-white flex items-center justify-between">
+              <p className="text-2xl">Lastest Sermon</p>
+              <span className='size-[72px] bg-[#676565] flex justify-center items-center rounded-md'>
+                <PlayCircleIcon className='size-8 opacity-75' />
+              </span>
+            </Link>
+
+            
+            <div className="bg-[#E86C4F] p-6 rounded-2xl text-white flex items-center justify-between h-[143px]">
+              <p className="text-2xl">Upcoming Events</p>
+               <span className='size-[72px] opacity-75 flex justify-center items-center rounded-md'>
+                <CalendarIcon className="w-8 h-8" />
+               </span>
+            </div>
+          </div>
+          
+
+        <div className='hidden md:flex flex-1 min-h-full p-2'>
           <div className=' w-full h-full pt-[72px] flex justify-center'>
             <div className="relative w-[272px] h-[273px] bg-teal-700 rounded-3xl p-4">
               <div className='flex justify-between items-center'>                  
