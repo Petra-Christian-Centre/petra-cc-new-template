@@ -6,6 +6,8 @@ import { LuCalendarRange } from "react-icons/lu";
 import rcimage from "@/public/Images/rcimage.png";
 import Sermons from "@/components/Sermons";
 import ListenNow from "@/components/ListenNow";
+import ConferenceInfo from "@/components/ConferenceInfo";
+import Global from "@/components/Global";
 
 export default function ProgramPage() {
   const programs = [
@@ -140,12 +142,18 @@ export default function ProgramPage() {
           </div>
         </div>
       </div>
-
       <div className="w-full px-4 mt-32 bg-white pt-20">
         <Sermons />
       </div>
       <div className="w-full px-4 mt-32">
-        <ListenNow/>
+        <ListenNow />
+      </div>
+
+      <div className="w-full bg-white mt-32">
+        <ConferenceInfo />
+      </div>
+      <div className="w-full">
+        <Global />
       </div>
     </>
   );
