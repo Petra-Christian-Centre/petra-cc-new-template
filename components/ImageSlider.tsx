@@ -27,7 +27,7 @@ const ImageSlider = () => {
   ];
 
   return (
-    <section className="relative bg-black px-2 py-8 md:py-16 w-screen left-[50%] right-[50%] mx-[-50vw]">
+    <section className="relative px-2 py-8 md:py-16 w-screen left-[50%] right-[50%] mx-[-50vw]">
       <div className="container mx-auto">
         <Swiper
           modules={[Pagination, EffectCoverflow]}
