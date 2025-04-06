@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import bigglobe from '@/public/Images/bigglobe.png';
 
-export default function Global() {
+export default function Global({ hasImage = true }: { hasImage?: boolean }) {  
   return (
     <div className="md:w-full relative mt-32 md:mx-0 mx-4">
       {/* Container with background color */}
@@ -37,15 +37,17 @@ export default function Global() {
       </div>
       
       {/* Globe image - moved outside the container to allow overflow */}
-      <div className="absolute md:-bottom-40 -bottom-20 left-1/2 transform -translate-x-1/2 translate-y-1/3 w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px]">
-        <Image
-          src={bigglobe}
-          alt="Global reach"
-          className="object-contain"
-          fill
-          priority
-        />
-      </div>
+      {hasImage && (
+        <div className="absolute md:-bottom-40 -bottom-20 left-1/2 transform -translate-x-1/2 translate-y-1/3 w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] md:w-[400px] md:h-[400px] lg:w-[600px] lg:h-[600px]">
+          <Image
+            src={bigglobe}
+            alt="Global reach"
+            className="object-contain"
+            fill
+            priority
+          />
+        </div>
+      )}
     </div>
   );
 } 
