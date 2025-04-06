@@ -5,17 +5,21 @@ import petrafooter from '@/public/Images/petrafooter.png';
 
 export default function Footer() {
   return (
-    <footer className="bg-black text-white py-20 mt-64">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
-        {/* Logo Section - Removed padding and increased size */}
-        <div className="md:col-span-3 relative h-[300px]">
-          <Image
-            src={petrafooter}
-            alt="Petra Footer Logo"
-            fill
-            className="object-contain object-left"
-          />
-        </div>
+    <footer className="bg-black text-white py-20 mt-64 relative overflow-hidden">
+      {/* Logo Section - Large background logo */}
+      <div className="absolute left-0 bottom-0 w-[500px] h-[500px] -mb-20 -ml-20">
+        <Image
+          src={petrafooter}
+          alt="Petra Footer Logo"
+          fill
+          className="object-contain"
+          priority
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 relative z-10">
+        {/* Spacer for logo area */}
+        <div className="md:col-span-3" />
 
         {/* Quick Links Section 1 */}
         <div className="md:col-span-3 px-4">
