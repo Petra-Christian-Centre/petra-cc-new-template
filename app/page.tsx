@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import ImageSlider from '@/components/ImageSlider';
 import MissionsSection from '@/components/MissionsSection';
 import ProgramsSection from '@/components/ProgramsSection';
+import BooksSection from '@/components/BooksSection';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <ImageSlider />
       <MissionsSection />
       <ProgramsSection />
+      <BooksSection />
       
     </main>
   );

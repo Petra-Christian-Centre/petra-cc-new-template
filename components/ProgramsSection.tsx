@@ -55,8 +55,10 @@ const ProgramsSection = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="mb-12">
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-jedira-regular mb-6">
-            You have <span className="text-amber-300">an</span><br />
-            appointment <span className="text-amber-300">with God</span>
+            <span className="bg-gradient-to-tr from-white via-[#EBB2A0] to-white bg-clip-text text-transparent">
+              You have <span>an</span><br />
+              appointment <span>with God</span>
+            </span>
           </h1>
         </div>
         
@@ -66,7 +68,7 @@ const ProgramsSection = () => {
 
         <div className="space-y-6">
           {programs.map((program) => (
-            <div key={program.id} className="border-t border-gray-700 py-4">
+            <div key={program.id} className={program.hasDetails ? 'border-t border-gray-700 py-4' : 'md:pl-[150px]'}>
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
                 {program.hasDetails && program.image && (
                   <div className="w-32 h-24 relative rounded-md overflow-hidden">
@@ -91,7 +93,7 @@ const ProgramsSection = () => {
                       aria-label={`Learn more about ${program.title}`}
                       tabIndex={0}
                     >
-                      <span>LEARN MORE</span>
+                      <span className='font-bold'>LEARN MORE</span>
                       <span className='text-primary h-4 w-4 ml-1 transition-transform group-hover:translate-x-1'>
                         <svg 
                           xmlns="http://www.w3.org/2000/svg" 
@@ -102,7 +104,6 @@ const ProgramsSection = () => {
                         >
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                         </svg>
-
                       </span>
                     </Link>
                   )}
