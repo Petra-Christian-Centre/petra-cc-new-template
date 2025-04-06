@@ -1,10 +1,20 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import ListenNow from "@/components/ListenNow";
 import Hero from "@/components/RockoftheWord/Hero";
 import Quote from "@/components/RockoftheWord/Quote";
 import Global from "@/components/Global";
+
+export const metadata: Metadata = {
+  title: 'Rock of the Word',
+  description: 'Fuel your faith anytime, anywhere with life-transforming messages from Rock of the Word. Experience divine revelation and spiritual growth.',
+  openGraph: {
+    title: 'Rock of the Word | Tribe Petra Ministry World',
+    description: 'Fuel your faith anytime, anywhere with life-transforming messages from Rock of the Word. Experience divine revelation and spiritual growth.',
+  },
+};
 
 export default function ProgramPage() {
   return (

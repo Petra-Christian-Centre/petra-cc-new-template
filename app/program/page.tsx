@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import type { Metadata } from "next";
 import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
 import rcimage from "@/public/Images/rcimage.png";
@@ -8,6 +9,16 @@ import Sermons from "@/components/Sermons";
 import ListenNow from "@/components/ListenNow";
 import ConferenceInfo from "@/components/ConferenceInfo";
 import Global from "@/components/Global";
+
+export const metadata: Metadata = {
+  title: 'Programs',
+  description: 'Discover transformative programs at Tribe Petra Ministry World. From Rain Conference to Total Immersion, experience spiritual growth through our diverse range of events.',
+  openGraph: {
+    title: 'Programs | Tribe Petra Ministry World',
+    description: 'Discover transformative programs at Tribe Petra Ministry World. From Rain Conference to Total Immersion, experience spiritual growth through our diverse range of events.',
+  },
+  keywords: ['Rain Conference', 'Total Immersion', 'Kindle', 'The Festival', 'Look & Live', 'Tribe Petra School of Ministry'],
+};
 
 export default function ProgramPage() {
   const programs = [
@@ -22,7 +33,7 @@ export default function ProgramPage() {
   return (
     <>
       <div className="w-full max-w-7xl mx-auto mt-20">
-        <div className="relative w-full h-[234px] mb-12 rounded-[8px]">
+        <div className="relative md:w-full md:h-[234px] h-[150px] mb-12 md:mx-0 mx-4 rounded-[8px]">
           <Image
             src={programhero}
             alt="Hero background"
@@ -66,7 +77,7 @@ export default function ProgramPage() {
                 <Link
                   key={index}
                   href={program.href}
-                  className={`block p-4 rounded-full transition-colors ${
+                  className={`block p-4 md:rounded-full rounded-[8px] transition-colors ${
                     index === 0
                       ? "bg-[#FF6B4A] text-white"
                       : "bg-[#fff] hover:bg-gray-200 text-black"
@@ -92,42 +103,45 @@ export default function ProgramPage() {
           </div>
 
           {/* Right Column - Featured Program (70%) */}
-          <div className="md:col-span-8 pl-10">
+          <div className="md:col-span-8 pl-0 md:pl-10">
             <div className="bg-black">
-              <div className=" text-white p-3 rounded-t-lg">
-                <h3 className="text-[24px]">Rain conference</h3>
+              <div className="text-white p-3 rounded-t-lg">
+                <h3 className="text-[20px] md:text-[24px]">Rain conference</h3>
               </div>
 
-              <div className="flex items-center gap-4 mb-6 bg-[#ECEBE9] rounded-t-lg p-8">
-                <div className="p-3 bg-white rounded-lg">
-                  <LuCalendarRange size={24} color="#FF7C54" />
+              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 bg-[#ECEBE9] rounded-t-lg p-4 sm:p-8">
+                <div className="flex items-center gap-4 w-full sm:w-auto">
+                  <div className="p-3 bg-white rounded-lg shrink-0">
+                    <LuCalendarRange size={24} color="#FF7C54" />
+                  </div>
+                  <div>
+                    <h4 className="font-[400] text-black">Yaweh Saboath</h4>
+                    <p className="text-black font-[700]">Rain Conference 2025</p>
+                  </div>
                 </div>
-                <div>
-                  <h4 className="font-[400] text-black">Yaweh Saboath</h4>
-                  <p className="text-black font-[700]">Rain Conference 2025</p>
-                </div>
-                <div className="ml-auto text-right flex space-x-4">
-                  <p className="text-[16px] text-black font-[400]">
+                <div className="w-full sm:w-auto sm:ml-auto flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
+                  <p className="text-[14px] sm:text-[16px] text-black font-[400]">
                     Next Schedule
                   </p>
-                  <p className="text-[16px] text-black font-[500]">
+                  <p className="text-[14px] sm:text-[16px] text-black font-[500]">
                     July, 2025
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="">
-              <div className="relative w-full h-[300px] rounded-lg overflow-hidden mb-6">
+            <div className="mt-6">
+              <div className="relative w-full h-[200px] sm:h-[300px] rounded-lg overflow-hidden mb-6">
                 <Image
                   src={rcimage}
                   alt="Rain Conference"
                   fill
                   className="object-cover"
+                  priority
                 />
               </div>
 
-              <p className="text-gray-700">
+              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
                 Rain Conference is an annual event organized by Petra Christian
                 Centre, aimed at empowering believers and fostering spiritual
                 growth. It's typically focused on deepening understanding of
