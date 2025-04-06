@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from '@/components/Hero';
 import ImageSlider from '@/components/ImageSlider';
 import MissionsSection from '@/components/MissionsSection';
+import ProgramsSection from '@/components/ProgramsSection';
 
 export default function Home() {
   return (
@@ -9,6 +10,8 @@ export default function Home() {
       <Hero />
       <ImageSlider />
       <MissionsSection />
+      <ProgramsSection />
+      
     </main>
   );
 }
