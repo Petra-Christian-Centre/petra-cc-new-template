@@ -72,7 +72,7 @@ export default function SermonSlider() {
         {sermonData.map((sermon, index) => (
           <SwiperSlide key={index}>
             <div className="relative group">
-              <div className="relative rounded-lg overflow-hidden w-[535px] h-[286px]">
+              <div className="relative rounded-lg overflow-hidden md:w-[535px] w-[300px] md:h-[286px] h-[150px]">
                 <Image
                   src={sermon.thumbnail}
                   alt={sermon.title}

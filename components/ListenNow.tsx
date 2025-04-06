@@ -82,29 +82,29 @@ export default function ListenNow() {
   };
 
   return (
-    <div className="w-full max-w-7xl mx-auto p-8 bg-white rounded-2xl">
+    <div className="w-full max-w-7xl mx-auto md:p-8 p-4 bg-white rounded-2xl">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 relative">
-           <MdHeadsetMic color='#FA6C41' size={58}/>
+      <div className="flex md:flex-row flex-col md:items-center items-start justify-between mb-8">
+        <div className="flex md:items-center gap-4">
+          <div className="md:w-10 md:h-10 w-6 h-6 relative">
+           <MdHeadsetMic color='#FA6C41' size={48}/>
           </div>
-          <h2 className="text-[48px] font-jedira-regular text-black ml-4">Listen Now</h2>
+          <h2 className="md:text-[48px] text-[32px] font-jedira-regular text-black ml-4">Listen Now</h2>
         </div>
-        <p className="text-gray-600 max-w-md">
+        <p className="text-gray-600 max-w-md md:mt-0 mt-6">
           Ditch the low life and dive into the deep end, exploring the possibilities of your new life in Christ
         </p>
       </div>
 
       {/* Sermons List */}
-      <div className="space-y-4 bg-[#F7F8F8] py-10 px-10 rounded-[12px] mt-20">
+      <div className="space-y-4 bg-[#F7F8F8] md:py-10 py-2 md:px-10 px-2 rounded-[12px] mt-20">
         {sermons.map((sermon) => (
           <div
             key={sermon.id}
             className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-lg transition-colors"
           >
             {/* Thumbnail */}
-            <div className="relative w-14 h-14 flex-shrink-0">
+            <div className="relative md:w-14 md:h-14 w-6 h-6 flex-shrink-0">
               <Image
                 src={listenicon}
                 alt={sermon.title}
@@ -139,7 +139,7 @@ export default function ListenNow() {
                 setCurrentSermonId(sermon.id);
                 setIsPlaying(!isPlaying);
               }}
-              className="w-12 h-12 rounded-full bg-[#7C3AED] flex items-center justify-center text-white hover:bg-[#6D28D9] transition-colors"
+              className="md:w-12 md:h-12 w-6 h-6 rounded-full bg-[#7C3AED] flex items-center justify-center text-white hover:bg-[#6D28D9] transition-colors"
             >
               {currentSermonId === sermon.id && isPlaying ? (
                 <PauseIcon />
