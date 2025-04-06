@@ -156,7 +156,7 @@ export default function ProgramPage() {
           </div>
         </div>
       </div>
-      {/* <div className="w-full px-4 mt-32 bg-white pt-20">
+      <div className="w-full px-4 mt-32 bg-white pt-20">
         <Sermons />
       </div>
       <div className="w-full px-4 mt-32">
@@ -168,7 +168,7 @@ export default function ProgramPage() {
       </div>
       <div className="w-full">
         <Global />
-      </div> */}
+      </div>
     </>
   );
 }

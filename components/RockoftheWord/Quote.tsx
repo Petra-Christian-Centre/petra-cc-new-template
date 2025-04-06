@@ -26,14 +26,16 @@ const QuoteMark = () => (
 
 export default function Quote() {
   return (
-    <div className="relative w-full py-24 px-4 md:px-16">
+    <div className="relative w-full md:py-24 py-12 px-4 md:px-16">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row items-center gap-12 md:gap-20">
+        <div className="flex flex-col lg:flex-row items-center gap-12 md:gap-20">
           {/* Left side with image */}
           <div className="relative">
-            <QuoteMark />
+            <div className="md:block hidden">
+              <QuoteMark />
+            </div>
             {/* Circular image container */}
-            <div className="relative w-[400px] h-[400px] md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-8 border-white shadow-2xl">
+            <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-full overflow-hidden border-8 border-white shadow-2xl">
               <Image
                 src={pastayo}
                 alt="Pastor"
@@ -45,7 +47,7 @@ export default function Quote() {
           </div>
 
           {/* Right side content */}
-          <div className="flex-1 text-center md:text-left">
+          <div className="flex-1 md:text-center text-start">
             <h3 className="text-[#FF5733] uppercase tracking-wider font-bold mb-4">
               IT IS
             </h3>
