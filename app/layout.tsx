@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import localFont from 'next/font/local';
 import "./globals.css";
-import Navbar from '@/components/Navbar';
 import Footer from "@/components/Footer";
+import Navigation from '@/components/Navigation'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -101,7 +101,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jediraRegular.variable} ${jediraItalic.variable} ${inter.variable} antialiased`}
       >
-        <Navbar />
+        <div className="md:px-[72px] md:pt-11">
+          <Navigation />
+        </div>
         <main className="min-h-screen">
           {children}
         </main>
