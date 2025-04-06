@@ -55,7 +55,7 @@ export default function Quote() {
               As far as your eyes can see. God is willing and able to rewrite your story
             </h2>
             <p className="text-lg md:text-xl leading-relaxed max-w-2xl text-[#5F5F5F]">
-              At Rain Conference, we believe in the power of community and divine encounters. Together, we break barriers, receive revelation, and experience renewal in an atmosphere charged with God's presence."
+              At Rain Conference, we believe in the power of community and divine encounters. Together, we break barriers, receive revelation, and experience renewal in an atmosphere charged with God&apos;s presence.&quot;
             </p>
           </div>
         </div>

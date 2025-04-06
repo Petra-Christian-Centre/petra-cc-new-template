@@ -1,4 +1,6 @@
 'use client'
+import React from 'react';
+import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
@@ -66,11 +68,11 @@ const ImageSlider = () => {
             <SwiperSlide key={slide.id} className="pb-10">
               <div className="relative rounded-xl overflow-hidden h-[450px] md:h-[500px] border border-gray-800">
                 <div className="w-full h-full relative">
-                  {/* Using relative path - replace with your actual image paths */}
-                  <img
+                  <Image
                     src={slide.image}
                     alt={slide.title}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
                   />
                 </div>
                 

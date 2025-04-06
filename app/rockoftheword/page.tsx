@@ -1,8 +1,6 @@
 'use client';
 
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import ListenNow from "@/components/ListenNow";
 import Hero from "@/components/RockoftheWord/Hero";
@@ -28,18 +26,6 @@ export default function ProgramPage() {
       opacity: 1,
       transition: {
         duration: 0.6,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const textVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
         ease: "easeOut"
       }
     }

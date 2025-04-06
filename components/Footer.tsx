@@ -27,7 +27,7 @@ export default function Footer() {
           <ul className="space-y-4">
             <li>
               <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                Visit Pastor Ayo's Website
+                Visit Pastor Ayo&apos;s Website
               </Link>
             </li>
             <li>
@@ -54,7 +54,7 @@ export default function Footer() {
           <ul className="space-y-4">
             <li>
               <Link href="#" className="text-gray-300 hover:text-white transition-colors">
-                Visit Pastor Ayo's Website
+                Visit Pastor Ayo&apos;s Website
               </Link>
             </li>
             <li>
@@ -77,7 +77,7 @@ export default function Footer() {
 
         {/* Newsletter Section */}
         <div className="md:col-span-3 bg-[#F5DFD1] text-black p-6 rounded-2xl mx-4">
-          <h3 className="font-jedira-regular text-2xl mb-4">Let's stay in touch</h3>
+          <h3 className="font-jedira-regular text-2xl mb-4">Let&apos;s stay in touch</h3>
           <p className="text-sm mb-4">Your email</p>
           <input
             type="email"
