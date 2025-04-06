@@ -18,7 +18,7 @@ export default function ConferenceInfo() {
           <p className="text-gray-600 text-lg leading-relaxed">
             At Rain Conference, we believe in the power of community and divine encounters. 
             Together, we break barriers, receive revelation, and experience renewal in an 
-            atmosphere charged with God's presence.
+            atmosphere charged with God&apos;s presence.
           </p>
         </div>
 

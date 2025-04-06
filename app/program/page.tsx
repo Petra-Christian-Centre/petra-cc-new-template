@@ -3,7 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
 import rcimage from "@/public/Images/rcimage.png";
@@ -297,10 +297,10 @@ export default function ProgramPage() {
               >
                 Rain Conference is an annual event organized by Petra Christian
                 Centre, aimed at empowering believers and fostering spiritual
-                growth. It's typically focused on deepening understanding of
+                growth. It&apos;s typically focused on deepening understanding of
                 faith, personal development, and spiritual renewal through
                 teachings, worship sessions, and community-building activities.
-                Rain Conference is more than an event; it's an awakening.
+                Rain Conference is more than an event; it&apos;s an awakening.
                 Through impactful teachings, worship, and fellowship, we are
                 creating an atmosphere where lives are transformed and purpose
                 is revealed
