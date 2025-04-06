@@ -1,116 +1,117 @@
 'use client'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination } from 'swiper/modules';
+import { Pagination, EffectCoverflow } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { useState } from 'react';
+import 'swiper/css/effect-coverflow';
 
 const ImageSlider = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // Add your event images to the public folder with these names 
+  // or update the paths below to match your existing images
   const slides = [
     {
       id: 1,
-      image: 'https://images.pexels.com/photos/8980982/pexels-photo-8980982.jpeg',
+      image: 'https://images.pexels.com/photos/8047028/pexels-photo-8047028.jpeg',
       title: 'Preaching The Word',
     },
     {
       id: 2,
-      image: 'https://images.pexels.com/photos/7089617/pexels-photo-7089617.jpeg',
+      image: 'https://images.pexels.com/photos/8047028/pexels-photo-8047028.jpeg',
       title: 'Total Immersion, June 2025',
     },
     {
       id: 3,
       image: 'https://images.pexels.com/photos/8047028/pexels-photo-8047028.jpeg',
       title: 'Worship Experience',
-    },
-    // {
-    //   id: 4,
-    //   image: 'https://images.pexels.com/photos/8047028/pexels-photo-8047028.jpeg',
-    //   title: 'Worship Experience',
-    // },
-    // {
-    //   id: 5,
-    //   image: 'https://images.pexels.com/photos/8047028/pexels-photo-8047028.jpeg',
-    //   title: 'Worship Experience',
-    // },
-    // {
-    //   id: 6,
-    //   image: 'https://images.pexels.com/photos/8047028/pexels-photo-8047028.jpeg',
-    //   title: 'Worship Experience',
-    // },
-    // {
-    //   id: 7,
-    //   image: 'https://images.pexels.com/photos/8980982/pexels-photo-8980982.jpeg',
-    //   title: 'Preaching The Word',
-    // },
+    },    
   ];
 
   return (
-    <section className="relative bg-custom-gray px-2 py-8 md:py-16 w-screen left-[50%] right-[50%] mx-[-50vw]">
-      <div className="w-full">
+    <section className="relative bg-black px-2 py-8 md:py-16 w-screen left-[50%] right-[50%] mx-[-50vw]">
+      <div className="container mx-auto">
         <Swiper
-          modules={[Pagination]}
+          modules={[Pagination, EffectCoverflow]}
+          effect="coverflow"
           centeredSlides={true}
-          slidesPerView={3}
-          spaceBetween={24}
+          slidesPerView={1.6}
+          spaceBetween={0}
           loop={true}
-          onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
+          coverflowEffect={{
+            rotate: 0,
+            stretch: 0,
+            depth: 100,
+            modifier: 2.5,
+            slideShadows: false,
+          }}
           pagination={{
             clickable: true,
-            bulletClass: 'swiper-pagination-bullet !w-8 !h-1 !rounded-full',
+            el: '.swiper-pagination',
+            bulletClass: 'swiper-pagination-bullet !w-2 !h-2 !rounded-full mx-1',
             bulletActiveClass: 'swiper-pagination-bullet-active !bg-white',
           }}
           breakpoints={{
             640: {
-              slidesPerView: 3,
+              slidesPerView: 1.8,
+            },
+            768: {
+              slidesPerView: 2.2,
             },
             1024: {
-              slidesPerView: 3,
+              slidesPerView: 2.5,
             },
           }}
-          className="w-full flex "
-          
+          className="w-full"
         >
-          {slides.map((slide, index) => (
-            <SwiperSlide key={slide.id} className={index === activeIndex ? 'bg-green-500 flex-1' : 'bg-blue-500 w-[239px]'} >
-              
-                <div className={`bg-green- w-full h-[600px] rounded-2xl overflow-hidden`}></div>
-                        
-              {/* <div className="relative  h-[600px] rounded-2xl overflow-hidden">
-                <img
-                  src={slide.image}
-                  alt={slide.title}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-black/20" />
-                <div className="absolute top-4 left-4 bg-white/90 px-4 py-2 rounded-full">
-                  <p className="text-sm font-medium flex items-center gap-2">
-                    <span className="w-2 h-2 bg-red-500 rounded-full" />
-                    {slide.title}
-                  </p>
+          {slides.map((slide) => (
+            <SwiperSlide key={slide.id} className="pb-10">
+              <div className="relative rounded-xl overflow-hidden h-[450px] md:h-[500px] border border-gray-800">
+                <div className="w-full h-full relative">
+                  {/* Using relative path - replace with your actual image paths */}
+                  <img
+                    src={slide.image}
+                    alt={slide.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-              </div> */}
+                
+                {/* Label overlay at bottom */}
+                <div className="absolute bottom-0 left-0 w-full">
+                  <div className="flex justify-center items-center py-2">
+                    <div className="text-white bg-black/50 backdrop-blur-sm px-4 py-1 rounded-full text-xs md:text-sm">
+                      <span className="inline-block w-2 h-2 bg-white rounded-full mr-2"></span>
+                      {slide.title}
+                    </div>
+                  </div>
+                </div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
+        
+        {/* Custom pagination */}
+        <div className="swiper-pagination flex justify-center items-center mt-6"></div>
 
-        {/* Custom Styles for active slide scaling */}
+        {/* Custom Styles */}
         <style jsx global>{`
           .swiper-slide {
             transition: all 0.3s ease;
-            opacity: 0.4;            
+            opacity: 0.6;
+            transform: scale(0.8);
           }
-          .swiper-slide-active {            
-            transform: scaleX(2.15) !important;
-            opacity: 1 !important;
-            z-index: 2 !important;
+          .swiper-slide-active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
           }
           .swiper-pagination {
             position: relative !important;
-            margin-top: 2rem;
           }
           .swiper-pagination-bullet {
             background: rgba(255, 255, 255, 0.5);
+            opacity: 1;
+          }
+          .swiper-pagination-bullet-active {
+            background: white;
           }
         `}</style>
       </div>
