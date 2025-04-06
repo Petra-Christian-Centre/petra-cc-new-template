@@ -1,43 +1,120 @@
+'use client';
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { motion } from "framer-motion";
 import ListenNow from "@/components/ListenNow";
 import Hero from "@/components/RockoftheWord/Hero";
 import Quote from "@/components/RockoftheWord/Quote";
 import Global from "@/components/Global";
 
-export const metadata: Metadata = {
-  title: 'Rock of the Word',
-  description: 'Fuel your faith anytime, anywhere with life-transforming messages from Rock of the Word. Experience divine revelation and spiritual growth.',
-  openGraph: {
-    title: 'Rock of the Word | Tribe Petra Ministry World',
-    description: 'Fuel your faith anytime, anywhere with life-transforming messages from Rock of the Word. Experience divine revelation and spiritual growth.',
-  },
-};
-
 export default function ProgramPage() {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <>
-      {/* Hero Section */}
-      <div className="w-full max-w-7xl mx-auto mt-20">
-        <Hero />
-      </div>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="w-full max-w-7xl mx-auto mt-20"
+      >
+        <motion.div
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
+        >
+          <Hero />
+        </motion.div>
+      </motion.div>
 
-      {/* Listen Now Section */}
-      <div className="w-full px-4 mt-32">
-        <ListenNow />
-      </div>
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full px-4 mt-32"
+      >
+        <motion.div
+          variants={itemVariants}
+          whileHover={{
+            scale: 1.02,
+            transition: { duration: 0.3 }
+          }}
+        >
+          <ListenNow />
+        </motion.div>
+      </motion.div>
 
-      {/* Quote Section */}
-      <div className="w-full max-w-7xl mx-auto px-4 mt-20">
-        <Quote />
-      </div>
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full max-w-7xl mx-auto px-4 mt-20"
+      >
+        <motion.div
+          variants={itemVariants}
+          whileHover={{
+            scale: 1.02,
+            transition: { duration: 0.3 }
+          }}
+        >
+          <Quote />
+        </motion.div>
+      </motion.div>
 
-      {/* Partner Section */}
-      <div className="w-full max-w-7xl mx-auto px-4 mt-20">
-        <Global />
-      </div>
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="w-full max-w-7xl mx-auto px-4 mt-20"
+      >
+        <motion.div
+          variants={itemVariants}
+          whileHover={{
+            scale: 1.02,
+            transition: { duration: 0.3 }
+          }}
+        >
+          <Global />
+        </motion.div>
+      </motion.div>
     </>
   );
 }
