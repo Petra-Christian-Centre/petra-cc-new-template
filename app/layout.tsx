@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navigation from '@/components/Navigation'
+import Navbar from "@/components/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -102,7 +103,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${jediraRegular.variable} ${jediraItalic.variable} ${inter.variable} antialiased`}
       >
         <div className="md:px-[72px] md:pt-11">
-          <Navigation />
+          <Navbar />
         </div>
         <main className="min-h-screen">
           {children}
