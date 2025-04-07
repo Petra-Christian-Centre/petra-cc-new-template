@@ -5,6 +5,11 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  distDir: 'out',
+  // Ensure proper handling of client-side routing
+  experimental: {
+    appDir: true,
+  },
 }
 
 module.exports = nextConfig 
