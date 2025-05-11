@@ -4,6 +4,7 @@ import ImageSlider from '@/components/ImageSlider';
 import MissionsSection from '@/components/MissionsSection';
 import ProgramsSection from '@/components/ProgramsSection';
 import BooksSection from '@/components/BooksSection';
+import NewsSection from '@/components/NewsSection';
 import Global from '@/components/Global';
 import type { Metadata } from "next";
 
@@ -24,6 +25,7 @@ export default function Home() {
       <MissionsSection />
       <ProgramsSection />
       <BooksSection />      
+      <NewsSection />
       <Global hasImage={false} />
     </main>
   );
