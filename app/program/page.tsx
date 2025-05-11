@@ -1,7 +1,9 @@
+'use client';
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import type { Metadata } from "next";
+import { motion } from "framer-motion";
 import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
 import rcimage from "@/public/Images/rcimage.png";
@@ -9,16 +11,6 @@ import Sermons from "@/components/Sermons";
 import ListenNow from "@/components/ListenNow";
 import ConferenceInfo from "@/components/ConferenceInfo";
 import Global from "@/components/Global";
-
-export const metadata: Metadata = {
-  title: 'Programs',
-  description: 'Discover transformative programs at Tribe Petra Ministry World. From Rain Conference to Total Immersion, experience spiritual growth through our diverse range of events.',
-  openGraph: {
-    title: 'Programs | Tribe Petra Ministry World',
-    description: 'Discover transformative programs at Tribe Petra Ministry World. From Rain Conference to Total Immersion, experience spiritual growth through our diverse range of events.',
-  },
-  keywords: ['Rain Conference', 'Total Immersion', 'Kindle', 'The Festival', 'Look & Live', 'Tribe Petra School of Ministry'],
-};
 
 export default function ProgramPage() {
   const programs = [
@@ -30,145 +22,333 @@ export default function ProgramPage() {
     { title: "Tribe Petra School of Ministry", href: "#" },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        staggerChildren: 0.08
+      }
+    }
+  };
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0
+    }
+  };
+
+  const heroText = 'To make all men see - "Jesus"';
+
   return (
     <>
-      <div className="w-full max-w-7xl mx-auto mt-20">
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="w-full max-w-7xl mx-auto mt-20"
+      >
         <div className="relative md:w-full md:h-[234px] h-[150px] mb-12 md:mx-0 mx-4 rounded-[8px]">
-          <Image
-            src={programhero}
-            alt="Hero background"
-            fill
-            className="object-cover rounded-[8px]"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/30 rounded-[8px]" />{" "}
-          {/* Optional overlay for better text visibility */}
-          <div className="absolute top-1/4 left-8 md:left-16">
-            <h1 className="font-jedira-regular text-white text-[32px] md:text-[48px]">
-              To make all men
-            </h1>
-            <h1 className="font-jedira-regular -mt-3">
-              <span className="text-white text-[32px] md:text-[48px]">
-                see -{" "}
-              </span>
-              <span className="text-[#FFD84D] text-[32px] md:text-[48px]">
-                "Jesus"
-              </span>
-            </h1>
-          </div>
+          <motion.div
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeOut" }}
+            className="relative w-full h-full"
+          >
+            <Image
+              src={programhero}
+              alt="Hero background"
+              fill
+              className="object-cover rounded-[8px]"
+              priority
+            />
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="absolute inset-0 bg-black rounded-[8px]"
+            />
+          </motion.div>
+          
+          <motion.div 
+            variants={textVariants}
+            initial="hidden"
+            animate="visible"
+            className="absolute top-1/4 left-8 md:left-16"
+          >
+            <div className="overflow-hidden">
+              {heroText.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={letterVariants}
+                  className={`inline-block font-jedira-regular text-[32px] md:text-[48px] ${
+                    char === "J" ? "text-[#FFD84D]" : "text-white"
+                  }`}
+                  style={{ marginRight: char === " " ? "0.5rem" : "0.02em" }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </div>
+          </motion.div>
         </div>
-      </div>
-      {/* Hero Section */}
+      </motion.div>
 
-      {/* Programs Section */}
-      <div className="w-full max-w-7xl mx-auto px-4 mt-20">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="w-full max-w-7xl mx-auto px-4 mt-20"
+      >
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Left Column - Programs List (30%) */}
-          <div className="md:col-span-4 border border-[#EAE6E6] py-6 px-5 rounded-lg">
-            <h2 className="text-3xl font-bold mb-4 text-black">Our programs</h2>
-            <p className="text-gray-600 mb-8">
+          <motion.div 
+            variants={itemVariants} 
+            className="md:col-span-4 border border-[#EAE6E6] py-6 px-5 rounded-lg"
+          >
+            <motion.h2 
+              variants={textVariants}
+              className="text-3xl font-bold mb-4 text-black"
+            >
+              Our programs
+            </motion.h2>
+            <motion.p 
+              variants={textVariants}
+              className="text-gray-600 mb-8"
+            >
               You are next to be transformed! Stay updated on the ministries
               programs and event.
-            </p>
+            </motion.p>
 
-            {/* Programs Navigation */}
             <div className="space-y-2">
               {programs.map((program, index) => (
-                <Link
+                <motion.div
                   key={index}
-                  href={program.href}
-                  className={`block p-4 md:rounded-full rounded-[8px] transition-colors ${
-                    index === 0
-                      ? "bg-[#FF6B4A] text-white"
-                      : "bg-[#fff] hover:bg-gray-200 text-black"
-                  }`}
+                  variants={itemVariants}
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
+                  whileTap={{ scale: 0.98 }}
                 >
-                  {program.title}
-                </Link>
+                  <Link
+                    href={program.href}
+                    className={`block p-4 md:rounded-full rounded-[8px] transition-all duration-300 ${
+                      index === 0
+                        ? "bg-[#FF6B4A] text-white hover:bg-[#ff5a35]"
+                        : "bg-[#fff] hover:bg-gray-200 hover:shadow-md text-black"
+                    }`}
+                  >
+                    {program.title}
+                  </Link>
+                </motion.div>
               ))}
             </div>
 
-            {/* Notification Box */}
-            <div className="mt-8 bg-black text-white p-6 rounded-lg">
+            <motion.div 
+              variants={itemVariants}
+              whileHover={{ 
+                scale: 1.02,
+                boxShadow: "0 10px 30px rgba(0,0,0,0.1)"
+              }}
+              transition={{ duration: 0.3 }}
+              className="mt-8 bg-black text-white p-6 rounded-lg"
+            >
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-2xl">🔔</span>
+                <motion.span 
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, -10, 0]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatDelay: 3
+                  }}
+                  className="text-2xl"
+                >
+                  🔔
+                </motion.span>
                 <h3 className="text-xl">
                   Get Notified of these meeting and be blessed
                 </h3>
               </div>
-              <button className="bg-[#B4419F] text-white px-6 py-2 rounded-lg hover:bg-opacity-90 transition-opacity">
+              <motion.button 
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "#d44db8"
+                }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-[#B4419F] text-white px-6 py-2 rounded-lg transition-colors duration-300"
+              >
                 Subscribe
-              </button>
-            </div>
-          </div>
+              </motion.button>
+            </motion.div>
+          </motion.div>
 
-          {/* Right Column - Featured Program (70%) */}
-          <div className="md:col-span-8 pl-0 md:pl-10">
+          <motion.div 
+            variants={itemVariants} 
+            className="md:col-span-8 pl-0 md:pl-10"
+          >
             <div className="bg-black">
-              <div className="text-white p-3 rounded-t-lg">
+              <motion.div 
+                variants={textVariants}
+                className="text-white p-3 rounded-t-lg"
+              >
                 <h3 className="text-[20px] md:text-[24px]">Rain conference</h3>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 bg-[#ECEBE9] rounded-t-lg p-4 sm:p-8">
+              <motion.div 
+                variants={itemVariants}
+                whileHover={{ scale: 1.01 }}
+                className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-6 bg-[#ECEBE9] rounded-t-lg p-4 sm:p-8"
+              >
                 <div className="flex items-center gap-4 w-full sm:w-auto">
-                  <div className="p-3 bg-white rounded-lg shrink-0">
+                  <motion.div 
+                    whileHover={{ rotate: 360 }}
+                    transition={{ duration: 0.5 }}
+                    className="p-3 bg-white rounded-lg shrink-0"
+                  >
                     <LuCalendarRange size={24} color="#FF7C54" />
-                  </div>
+                  </motion.div>
                   <div>
-                    <h4 className="font-[400] text-black">Yaweh Saboath</h4>
-                    <p className="text-black font-[700]">Rain Conference 2025</p>
+                    <motion.h4 
+                      variants={textVariants}
+                      className="font-[400] text-black"
+                    >
+                      Yaweh Saboath
+                    </motion.h4>
+                    <motion.p 
+                      variants={textVariants}
+                      className="text-black font-[700]"
+                    >
+                      Rain Conference 2025
+                    </motion.p>
                   </div>
                 </div>
                 <div className="w-full sm:w-auto sm:ml-auto flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
-                  <p className="text-[14px] sm:text-[16px] text-black font-[400]">
+                  <motion.p 
+                    variants={textVariants}
+                    className="text-[14px] sm:text-[16px] text-black font-[400]"
+                  >
                     Next Schedule
-                  </p>
-                  <p className="text-[14px] sm:text-[16px] text-black font-[500]">
+                  </motion.p>
+                  <motion.p 
+                    variants={textVariants}
+                    className="text-[14px] sm:text-[16px] text-black font-[500]"
+                  >
                     July, 2025
-                  </p>
+                  </motion.p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            <div className="mt-6">
-              <div className="relative w-full h-[200px] sm:h-[300px] rounded-lg overflow-hidden mb-6">
+            <motion.div 
+              variants={itemVariants}
+              className="mt-6"
+            >
+              <motion.div 
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0 20px 40px rgba(0,0,0,0.1)"
+                }}
+                transition={{ duration: 0.3 }}
+                className="relative w-full h-[200px] sm:h-[300px] rounded-lg overflow-hidden mb-6"
+              >
                 <Image
                   src={rcimage}
                   alt="Rain Conference"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 hover:scale-110"
                   priority
                 />
-              </div>
+              </motion.div>
 
-              <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
+              <motion.p 
+                variants={textVariants}
+                className="text-gray-700 text-sm sm:text-base leading-relaxed"
+              >
                 Rain Conference is an annual event organized by Petra Christian
                 Centre, aimed at empowering believers and fostering spiritual
-                growth. It's typically focused on deepening understanding of
+                growth. It&apos;s typically focused on deepening understanding of
                 faith, personal development, and spiritual renewal through
                 teachings, worship sessions, and community-building activities.
-                Rain Conference is more than an event; it's an awakening.
+                Rain Conference is more than an event; it&apos;s an awakening.
                 Through impactful teachings, worship, and fellowship, we are
                 creating an atmosphere where lives are transformed and purpose
                 is revealed
-              </p>
-            </div>
-          </div>
+              </motion.p>
+            </motion.div>
+          </motion.div>
         </div>
-      </div>
-      <div className="w-full px-4 mt-32 bg-white pt-20">
-        <Sermons />
-      </div>
-      <div className="w-full px-4 mt-32">
-        <ListenNow />
-      </div>
+      </motion.div>
 
-      <div className="w-full bg-white mt-32">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="w-full px-4 mt-32 bg-white pt-20"
+      >
+        <Sermons />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="w-full px-4 mt-32"
+      >
+        <ListenNow />
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="w-full bg-white mt-32"
+      >
         <ConferenceInfo />
-      </div>
-      <div className="w-full">
+      </motion.div>
+
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
+        className="w-full"
+      >
         <Global />
-      </div>
+      </motion.div>
     </>
   );
 }

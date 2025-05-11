@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { PlayCircleIcon, ArrowRightIcon, CalendarIcon } from '@heroicons/react/24/outline';
+import { PlayCircleIcon } from '@heroicons/react/24/solid';
+import { ArrowRightIcon, CalendarIcon } from '@heroicons/react/24/outline';
 
 export default function HomeHero() {
   return (
