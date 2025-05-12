@@ -3,24 +3,39 @@ import { ArrowRightIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
 import CalendarIcon from './icons/CalendarIcon'
+import { ClientMotionDiv, textContainerVariants, textVariants, cardContainerVariants, cardVariants } from './ClientMotion'
 
 const Hero = () => {
   return (
     <section className="min-h-screen flex flex-col md:flex-row bg-custom-gray px-4 py-8 md:py-16">
       
         <div className='flex-1 min-h-full mt-[51px] sm:mt-0 sm:pl-[72px] sm:pt-[154px]'>
-          <div className="space-y-6 md:max-w-2xl">
-            <h1 className="text-center sm:text-left text-[72px] leading-[80px] font-jedira-regular">
-              Tribe Petra
-              <br />
-              Ministry World
-            </h1>
+          <ClientMotionDiv 
+            className="space-y-6 md:max-w-2xl"
+            variants={textContainerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            <ClientMotionDiv 
+              className="text-center sm:text-left text-[72px] leading-[80px] font-jedira-regular"
+              variants={textVariants}
+            >
+              <ClientMotionDiv variants={textVariants} className="block">Tribe Petra</ClientMotionDiv>
+              <ClientMotionDiv variants={textVariants} className="block">Ministry World</ClientMotionDiv>
+            </ClientMotionDiv>
             
-            <p className="text-lg md:mt-4 hidden md:block">
+            <ClientMotionDiv 
+              className="text-lg md:mt-4 hidden md:block"
+              variants={textVariants}
+            >
               Led by Pastor Ayo Ajani
-            </p>
+            </ClientMotionDiv>
             
-            <div className=" bg-gray-300 md:bg-white px-1 flex rounded-[32px] md:rounded-full md:hidden flex-col items-start">
+            <ClientMotionDiv 
+              className="bg-gray-300 md:bg-white px-1 flex rounded-[32px] md:rounded-full md:hidden flex-col items-start"
+              variants={textVariants}
+            >
               <span className="px-4 py-4 text-center md:text-left w-full">
                 Be a part of Tribe Petra School of Ministry
               </span>
@@ -33,9 +48,12 @@ const Hero = () => {
                   <ArrowRightIcon className="w-4 h-4 text-red-500 mx-4" />               
               </Link>
               
-            </div>
+            </ClientMotionDiv>
             
-            <div className="max-w-[535px] hidden bg-white sm:flex items-center justify-between rounded-full p-2 shadow-sm">
+            <ClientMotionDiv 
+              className="max-w-[535px] hidden bg-white sm:flex items-center justify-between rounded-full p-2 shadow-sm"
+              variants={textVariants}
+            >
               <span className="px-6 text-gray-800 bg-gray-100 rounded-full py-2">
                 Be a part of Tribe Petra School of Ministry
               </span>
@@ -47,13 +65,23 @@ const Hero = () => {
                 Apply Now
                 <ArrowRightIcon className="w-5 h-5 ml-2 text-red-500" />
               </Link>
-            </div>
-          </div>
+            </ClientMotionDiv>
+          </ClientMotionDiv>
         </div>
 
-        <div className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 md:mt-0 md:w-[400px]">
-            
-            <Link href="/apply" className="bg-[#2F4F4F] p-6 h-[143px] rounded-2xl text-white md:col-span-2">
+        <ClientMotionDiv 
+          className="md:hidden grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8 md:mt-0 md:w-[400px]"
+          variants={cardContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <ClientMotionDiv 
+            variants={cardVariants}
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link href="/apply" className="block bg-[#2F4F4F] p-6 h-[143px] rounded-2xl text-white md:col-span-2">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="text-2xl font-medium">Visit Pastor Ayo&apos;s</h3>
@@ -64,28 +92,50 @@ const Hero = () => {
                 </span>
               </div>
             </Link>
-
-            
-            <Link href={"/..."} className="bg-[#4A4A4A] p-6 rounded-2xl text-white flex items-center justify-between">
+          </ClientMotionDiv>
+          
+          <ClientMotionDiv 
+            variants={cardVariants}
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link href={"/..."} className="block bg-[#4A4A4A] p-6 rounded-2xl text-white flex items-center justify-between">
               <p className="text-2xl">Lastest Sermon</p>
               <span className='size-[72px] bg-[#676565] flex justify-center items-center rounded-md'>
                 <PlayCircleIcon className='size-8 opacity-75' />
               </span>
             </Link>
-
-            
+          </ClientMotionDiv>
+          
+          <ClientMotionDiv 
+            variants={cardVariants}
+            whileHover={{ scale: 1.03 }}
+            transition={{ duration: 0.2 }}
+          >
             <div className="bg-[#E86C4F] p-6 rounded-2xl text-white flex items-center justify-between h-[143px]">
               <p className="text-2xl">Upcoming Events</p>
                <span className='size-[72px] opacity-75 flex justify-center items-center rounded-md'>
                 <CalendarIcon className="w-8 h-8" />
                </span>
             </div>
-          </div>
+          </ClientMotionDiv>
+        </ClientMotionDiv>
           
 
-        <div className='hidden md:flex flex-1 min-h-full p-2'>
-          <div className=' w-full h-full pt-[72px] flex justify-center'>
-            <div className="relative w-[272px] h-[273px] bg-teal-700 rounded-3xl p-4">
+        <ClientMotionDiv 
+          className='hidden md:flex flex-1 min-h-full p-2'
+          variants={cardContainerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          <div className='w-full h-full pt-[72px] flex justify-center'>
+            <ClientMotionDiv 
+              className="relative w-[272px] h-[273px] bg-teal-700 rounded-3xl p-4"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+            >
               <div className='flex justify-between items-center'>                  
                 <div className="w-24 h-24 rounded-full overflow-hidden g-gray-200">
                   <Image src="/images/pst-ayo-a-mini.png" alt="Pastor Ayo" width={84} height={84} />
@@ -100,12 +150,17 @@ const Hero = () => {
               <Link href="/" className="absolute bottom-12 text-white text-2xl font-medium">
                 Visit Pastor Ayo&apos;s<br />Website
               </Link>
-            </div>
+            </ClientMotionDiv>
           </div>
 
           <div className='w-full h-full flex'>
             <div className='space-y-4'>
-              <div className="relative w-[272px] h-[273px] bg-[#4A4A4A] rounded-3xl p-4">
+              <ClientMotionDiv 
+                className="relative w-[272px] h-[273px] bg-[#4A4A4A] rounded-3xl p-4"
+                variants={cardVariants}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className='flex justify-between items-center'>                  
                   <div className="">
                     
@@ -119,9 +174,14 @@ const Hero = () => {
                 <Link href="/" className="absolute bottom-4 text-white text-2xl font-medium">
                   Latest<br />Sermon
                 </Link>
-              </div>
+              </ClientMotionDiv>
               
-              <div className="relative w-[272px] h-[273px] bg-[#E86C4F] rounded-3xl p-4">
+              <ClientMotionDiv 
+                className="relative w-[272px] h-[273px] bg-[#E86C4F] rounded-3xl p-4"
+                variants={cardVariants}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.3 }}
+              >
                 <div className='flex justify-between items-center'>                  
                   <div className="">
                     
@@ -135,10 +195,10 @@ const Hero = () => {
                 <Link href="/" className="absolute bottom-4 text-white text-2xl font-medium">
                   Latest<br />Sermon
                 </Link>
-              </div>
+              </ClientMotionDiv>
             </div>
           </div>
-        </div>
+        </ClientMotionDiv>
       
     </section>
   )

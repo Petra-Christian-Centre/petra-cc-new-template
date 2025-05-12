@@ -1,6 +1,8 @@
 'use client'
 
 import dynamic from 'next/dynamic';
+import { ClientMotionDiv } from './ClientMotion';
+
 const CustomSwiper = dynamic(() => import('./CustomSwiper'), { ssr: false });
 
 const slides = [
@@ -23,9 +25,15 @@ const slides = [
 
 const ImageSlider = () => {
   return (
-    <section className="relative p-2">
+    <ClientMotionDiv
+      className="relative p-2"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+    >
       <CustomSwiper slides={slides} />
-    </section>
+    </ClientMotionDiv>
   );
 };
 
