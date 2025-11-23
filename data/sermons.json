@@ -5,7 +5,9 @@
     "duration": "1:18:03",
     "thumbnail": "/Images/mysteries.png",
     "image": "/Images/mysteries.png",
-    "sermonLink": "#"
+    "sermonLink": "#",
+    "preacher": "Pastor Ayo Ajani",
+    "spotifyUrl": "https://open.spotify.com/episode/1K3L8Ixi8XVL3Rnh7j0z6v?si=Z9wvwyhNRASQ8HNgD6L5eA"
   },
   {
     "title": "MYSTERIES OF THE KINGDOM 2",
@@ -13,7 +15,9 @@
     "duration": "1:18:03",
     "thumbnail": "/Images/mysteries.png",
     "image": "/Images/mysteries.png",
-    "sermonLink": "#"
+    "sermonLink": "#",
+    "preacher": "Pastor Ayo Ajani",
+    "spotifyUrl": null
   },
   {
     "title": "MYSTERIES OF THE KINGDOM 3",
@@ -21,7 +25,9 @@
     "duration": "1:18:03",
     "thumbnail": "/Images/mysteries.png",
     "image": "/Images/mysteries.png",
-    "sermonLink": "#"
+    "sermonLink": "#",
+    "preacher": "Pastor Ayo Ajani",
+    "spotifyUrl": null
   },
   {
     "title": "MYSTERIES OF THE KINGDOM 4",
@@ -29,7 +35,9 @@
     "duration": "1:18:03",
     "thumbnail": "/Images/mysteries.png",
     "image": "/Images/mysteries.png",
-    "sermonLink": "#"
+    "sermonLink": "#",
+    "preacher": "Pastor Ayo Ajani",
+    "spotifyUrl": null
   }
 ]
 

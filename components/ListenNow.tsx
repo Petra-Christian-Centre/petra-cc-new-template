@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
-import AudioPlayer from './AudioPlayer';
 import { MdHeadsetMic } from 'react-icons/md';
 import listenicon from "@/public/Images/listenicons.png"
+import sermonsData from "@/data/sermons.json";
 
 interface Sermon {
   id: string;
@@ -12,73 +12,26 @@ interface Sermon {
   preacher: string;
   date: string;
   duration: string;
-  audioUrl: string;
   thumbnail: string;
+  spotifyUrl?: string | null;
 }
 
-const sermons: Sermon[] = [
-  {
-    id: '1',
-    title: 'There is a river - RC 24',
-    preacher: 'Pastor Ayo Ajani',
-    date: '25th July, 2024',
-    duration: '2h:46m',
-    audioUrl: '/audio/sample1.mp3', // Replace with actual audio URL
-    thumbnail: '/Images/sermon-thumb.jpg', // Replace with actual thumbnail
-  },
-  {
-    id: '2',
-    title: 'Mysteries of the Kingdom',
-    preacher: 'Pastor Ayo Ajani',
-    date: '25th July, 2024',
-    duration: '2h:46m',
-    audioUrl: '/audio/sample2.mp3',
-    thumbnail: '/Images/sermon-thumb.jpg',
-  },
-  {
-    id: '3',
-    title: 'Soul Safari',
-    preacher: 'Pastor Ayo Ajani',
-    date: '25th July, 2024',
-    duration: '2h:46m',
-    audioUrl: '/audio/sample2.mp3',
-    thumbnail: '/Images/sermon-thumb.jpg',
-  },
-  {
-    id: '4',
-    title: 'But God- When mercy Steps in',
-    preacher: 'Pastor Ayo Ajani',
-    date: '25th July, 2024',
-    duration: '2h:46m',
-    audioUrl: '/audio/sample2.mp3',
-    thumbnail: '/Images/sermon-thumb.jpg',
-  },
-  {
-    id: '5',
-    title: 'Sure Mercies of David',
-    preacher: 'Pastor Ayo Ajani',
-    date: '25th July, 2024',
-    duration: '2h:46m',
-    audioUrl: '/audio/sample2.mp3',
-    thumbnail: '/Images/sermon-thumb.jpg',
-  },
-  // Add more sermons as needed
-];
+// Map JSON data to component structure
+const sermons: Sermon[] = sermonsData.map((sermon, index) => ({
+  id: String(index + 1),
+  title: sermon.title,
+  preacher: sermon.preacher || 'Pastor Ayo Ajani',
+  date: sermon.date,
+  duration: sermon.duration,
+  thumbnail: sermon.thumbnail || '/Images/mysteries.png',
+  spotifyUrl: sermon.spotifyUrl,
+}));
 
 export default function ListenNow() {
-  const [currentSermonId, setCurrentSermonId] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-
-  const currentSermon = sermons.find(sermon => sermon.id === currentSermonId);
-
-  const handleTimeUpdate = (progress: number) => {
-    setProgress(progress);
-  };
-
-  const handleEnded = () => {
-    setIsPlaying(false);
-    setProgress(0);
+  const handlePlayClick = (sermon: Sermon) => {
+    if (sermon.spotifyUrl) {
+      window.open(sermon.spotifyUrl, '_blank', 'noopener,noreferrer');
+    }
   };
 
   return (
@@ -123,55 +76,25 @@ export default function ListenNow() {
               </div>
             </div>
 
-            {/* Progress Bar (only for current sermon) */}
-            {currentSermonId === sermon.id && (
-              <div className="w-32 h-1 bg-gray-200 rounded-full">
-                <div
-                  className="h-full bg-[#7C3AED] rounded-full"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-            )}
-
-            {/* Play/Pause Button */}
+            {/* Play Button */}
             <button
-              onClick={() => {
-                setCurrentSermonId(sermon.id);
-                setIsPlaying(!isPlaying);
-              }}
-              className="md:w-12 md:h-12 w-6 h-6 rounded-full bg-[#7C3AED] flex items-center justify-center text-white hover:bg-[#6D28D9] transition-colors"
+              onClick={() => handlePlayClick(sermon)}
+              disabled={!sermon.spotifyUrl}
+              className="md:w-12 md:h-12 w-10 h-10 rounded-full bg-[#1DB954] flex items-center justify-center text-white hover:bg-[#1ed760] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              title={sermon.spotifyUrl ? "Play on Spotify" : "Spotify link not available"}
             >
-              {currentSermonId === sermon.id && isPlaying ? (
-                <PauseIcon />
-              ) : (
-                <PlayIcon />
-              )}
+              <PlayIcon />
             </button>
           </div>
         ))}
       </div>
 
-      {/* Audio Player */}
-      {currentSermon && (
-        <AudioPlayer
-          url={currentSermon.audioUrl}
-          isPlaying={isPlaying}
-          onTimeUpdate={handleTimeUpdate}
-          onEnded={handleEnded}
-        />
-      )}
     </div>
   );
 }
 
-const PlayIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+const PlayIcon = ({ size = 20 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
     <path d="M8 5v14l11-7z" />
-  </svg>
-);
-
-const PauseIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
   </svg>
 ); 
