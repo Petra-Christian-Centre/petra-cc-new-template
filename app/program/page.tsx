@@ -1,26 +1,20 @@
 'use client';
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
-import rcimage from "@/public/Images/rcimage.png";
+import programsData from "@/data/programs.json";
 import Sermons from "@/components/Sermons";
 import ListenNow from "@/components/ListenNow";
 import ConferenceInfo from "@/components/ConferenceInfo";
 import Global from "@/components/Global";
 
 export default function ProgramPage() {
-  const programs = [
-    { title: "Rain conference", href: "#" },
-    { title: "Total Immersion", href: "#" },
-    { title: "Kindle", href: "#" },
-    { title: "The Festival", href: "#" },
-    { title: "Look & Live", href: "#" },
-    { title: "Tribe Petra School of Ministry", href: "#" },
-  ];
+  const [selectedProgramIndex, setSelectedProgramIndex] = useState(0);
+  const selectedProgram = programsData[selectedProgramIndex];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -148,7 +142,7 @@ export default function ProgramPage() {
             </motion.p>
 
             <div className="space-y-2">
-              {programs.map((program, index) => (
+              {programsData.map((program, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
@@ -158,16 +152,16 @@ export default function ProgramPage() {
                   }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <Link
-                    href={program.href}
-                    className={`block p-4 md:rounded-full rounded-[8px] transition-all duration-300 ${
-                      index === 0
+                  <button
+                    onClick={() => setSelectedProgramIndex(index)}
+                    className={`block w-full text-left p-4 md:rounded-full rounded-[8px] transition-all duration-300 ${
+                      index === selectedProgramIndex
                         ? "bg-[#FF6B4A] text-white hover:bg-[#ff5a35]"
                         : "bg-[#fff] hover:bg-gray-200 hover:shadow-md text-black"
                     }`}
                   >
                     {program.title}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
             </div>
@@ -222,7 +216,7 @@ export default function ProgramPage() {
                 variants={textVariants}
                 className="text-white p-3 rounded-t-lg"
               >
-                <h3 className="text-[20px] md:text-[24px]">Rain conference</h3>
+                <h3 className="text-[20px] md:text-[24px]">{selectedProgram.title}</h3>
               </motion.div>
 
               <motion.div 
@@ -249,7 +243,7 @@ export default function ProgramPage() {
                       variants={textVariants}
                       className="text-black font-[700]"
                     >
-                      Rain Conference 2025
+                      {selectedProgram.title} {selectedProgram.nextDate.includes('2025') ? '2025' : selectedProgram.nextDate.includes('2024') ? '2024' : ''}
                     </motion.p>
                   </div>
                 </div>
@@ -258,13 +252,13 @@ export default function ProgramPage() {
                     variants={textVariants}
                     className="text-[14px] sm:text-[16px] text-black font-[400]"
                   >
-                    Next Schedule
+                    {selectedProgram.status === 'active' ? 'Current' : 'Next Schedule'}
                   </motion.p>
                   <motion.p 
                     variants={textVariants}
                     className="text-[14px] sm:text-[16px] text-black font-[500]"
                   >
-                    July, 2025
+                    {selectedProgram.nextDate}
                   </motion.p>
                 </div>
               </motion.div>
@@ -273,6 +267,10 @@ export default function ProgramPage() {
             <motion.div 
               variants={itemVariants}
               className="mt-6"
+              key={selectedProgramIndex}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
               <motion.div 
                 whileHover={{ 
@@ -283,8 +281,8 @@ export default function ProgramPage() {
                 className="relative w-full h-[200px] sm:h-[300px] rounded-lg overflow-hidden mb-6"
               >
                 <Image
-                  src={rcimage}
-                  alt="Rain Conference"
+                  src={selectedProgram.image}
+                  alt={selectedProgram.title}
                   fill
                   className="object-cover transition-transform duration-700 hover:scale-110"
                   priority
@@ -292,18 +290,12 @@ export default function ProgramPage() {
               </motion.div>
 
               <motion.p 
-                variants={textVariants}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
                 className="text-gray-700 text-sm sm:text-base leading-relaxed"
               >
-                Rain Conference is an annual event organized by Petra Christian
-                Centre, aimed at empowering believers and fostering spiritual
-                growth. It&apos;s typically focused on deepening understanding of
-                faith, personal development, and spiritual renewal through
-                teachings, worship sessions, and community-building activities.
-                Rain Conference is more than an event; it&apos;s an awakening.
-                Through impactful teachings, worship, and fellowship, we are
-                creating an atmosphere where lives are transformed and purpose
-                is revealed
+                {selectedProgram.description}
               </motion.p>
             </motion.div>
           </motion.div>

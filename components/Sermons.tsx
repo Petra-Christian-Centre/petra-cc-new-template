@@ -3,34 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import SermonHeader from "@/components/SermonHeader";
-
-
-const sermonData = [
-  {
-    title: "MYSTERIES OF THE KINGDOM",
-    date: "SAT 19TH OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 2",
-    date: "SAT 20TH OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 3",
-    date: "SAT 21ST OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 4",
-    date: "SAT 22ND OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-];
+import sermonsData from "@/data/sermons.json";
 
 // Dynamically import the slider component with no SSR
 const SermonSlider = dynamic(() => import("./SermonSlider"), {
@@ -51,6 +24,8 @@ type SermonsProps = {
     date: string;
     duration: string;
     thumbnail: string;
+    image: string;
+    sermonLink: string;
   }[];
 };
 
@@ -79,7 +54,7 @@ export default function Sermons({
         />
       </div>
       <div className="w-full md:w-4/6">
-        <SermonSlider sermonData={sermonData ?? []} />
+        <SermonSlider sermonData={sermonData ?? sermonsData} />
       </div>
     </section>
   );

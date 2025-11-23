@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -44,24 +45,26 @@ export default function SermonSlider({sermonData}: {sermonData: any[]}) {
       >
         {sermonData.map((sermon, index) => (
           <SwiperSlide key={index}>
-            <div className="relative group">
-              <div className="relative rounded-lg overflow-hidden md:w-[535px] w-[300px] md:h-[286px] h-[150px]">
-                <Image
-                  src={sermon.thumbnail}
-                  alt={sermon.title}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                />
-                <div className="absolute bottom-4 right-4 bg-black/70 px-2 py-1 rounded text-white text-sm">
-                  {sermon.duration}
+            <Link href={sermon.sermonLink || '#'} className="block">
+              <div className="relative group cursor-pointer">
+                <div className="relative rounded-lg overflow-hidden md:w-[535px] w-[300px] md:h-[286px] h-[150px]">
+                  <Image
+                    src={sermon.image || sermon.thumbnail}
+                    alt={sermon.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute bottom-4 right-4 bg-black/70 px-2 py-1 rounded text-white text-sm">
+                    {sermon.duration}
+                  </div>
+                </div>
+                
+                <div className="mt-4">
+                  <h4 className="text-[#FF6B4A] text-lg">{sermon.date}</h4>
+                  {/* <h3 className="text-xl font-bold mt-2">{sermon.title}</h3> */}
                 </div>
               </div>
-              
-              <div className="mt-4">
-                <h4 className="text-[#FF6B4A] text-lg">{sermon.date}</h4>
-                {/* <h3 className="text-xl font-bold mt-2">{sermon.title}</h3> */}
-              </div>
-            </div>
+            </Link>
           </SwiperSlide>
         ))}
       </Swiper>

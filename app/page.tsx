@@ -18,33 +18,6 @@ export const metadata: Metadata = {
   },
 };
 
-const sermonData = [
-  {
-    title: "MYSTERIES OF THE KINGDOM",
-    date: "SAT 19TH OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 2",
-    date: "SAT 20TH OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 3",
-    date: "SAT 21ST OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 4",
-    date: "SAT 22ND OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-];
-
 export default function Home() {
   return (
     <main className="flex flex-col min-h-screen">
@@ -53,7 +26,7 @@ export default function Home() {
       <MissionsSection />
       <ProgramsSection />
       <BooksSection />    
-      <Sermons eyebrowText="SERMONS" title={['Latest', 'Messages ', 'From TPWMW']} subheading="Listen to the latest sermons from our church" sermonData={sermonData ?? []} />
+      <Sermons eyebrowText="SERMONS" title={['Latest', 'Messages ', 'From TPWMW']} subheading="Listen to the latest sermons from our church" />
       <Global hasImage={true} />
     </main>
   );
