@@ -7,34 +7,8 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
-const sermonData = [
-  {
-    title: "MYSTERIES OF THE KINGDOM",
-    date: "SAT 19TH OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 2",
-    date: "SAT 20TH OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 3",
-    date: "SAT 21ST OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-  {
-    title: "MYSTERIES OF THE KINGDOM 4",
-    date: "SAT 22ND OCT",
-    duration: "1:18:03",
-    thumbnail: "/Images/mysteries.png",
-  },
-];
 
-export default function SermonSlider() {
+export default function SermonSlider({sermonData}: {sermonData: any[]}) {
   return (
     <div className="relative overflow-hidden">
       <style jsx global>
