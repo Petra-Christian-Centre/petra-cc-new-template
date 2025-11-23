@@ -67,7 +67,7 @@ export default function Sermons({
   const computedEyebrow = eyebrowText ?? subheading;
 
   return (
-    <section className="w-full mx-auto max-w-7xl px-4 py-16 flex flex-col md:flex-row items-start justify-between">
+    <section id="sermons" className="w-full mx-auto max-w-7xl px-4 py-16 flex flex-col md:flex-row items-start justify-between">
       <div className="w-full md:w-2/6">
         <SermonHeader
           title={title}

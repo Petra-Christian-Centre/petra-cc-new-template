@@ -1,54 +1,28 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import programsData from '@/data/programs.json';
 
 const ProgramsSection = () => {
-  const programs = [
-    {
-      id: 1,
-      title: 'Rain Conference',
-      description: 'We are on a mission to reveal Jesus to the world. By Building Jesus communities and influencing change in the word through the transformative power of the word',
-      date: 'July 2025',
-      status: 'next',
-      image: '/images/programs-section-thumbnail.png',
-      hasDetails: true
-    },
-    {
-      id: 2,
-      title: 'Total Immersion',
-      date: 'Nov 3 2024',
-      status: 'next',
-      hasDetails: false
-    },
-    {
-      id: 3,
-      title: 'Kindle',
-      date: 'Coming Soon',
-      status: 'next',
-      hasDetails: false
-    },
-    {
-      id: 4,
-      title: 'The Festival',
-      date: 'Coming Soon',
-      status: 'next',
-      hasDetails: false
-    },
-    {
-      id: 5,
-      title: 'Look & Live',
-      date: 'Coming Soon',
-      status: 'next',
-      hasDetails: false
-    },
-    {
-      id: 6,
-      title: 'Tribe Petra School of Ministry',
-      date: 'Happening Now',
-      status: 'active',
-      hasDetails: false
-    }
-  ];
+  const [openProgramId, setOpenProgramId] = useState<number | null>(null);
+
+  // Map JSON data to component structure
+  const programs = programsData.map((program, index) => ({
+    id: index + 1,
+    title: program.title,
+    description: program.description || undefined,
+    date: program.nextDate,
+    status: (program.status || 'next') as 'next' | 'active',
+    image: program.image || undefined,
+    hasDetails: program.hasDetails || false
+  }));
+
+  const handleTitleClick = (programId: number) => {
+    setOpenProgramId(openProgramId === programId ? null : programId);
+  };
 
   return (
     <section className="py-16 px-4 bg-black text-white">
@@ -68,7 +42,7 @@ const ProgramsSection = () => {
 
         <div className="space-y-6">
           {programs.map((program) => (
-            <div key={program.id} className={program.hasDetails ? 'border-t border-gray-700 py-4' : 'md:pl-[150px]'}>
+            <div key={program.id} className={program.hasDetails ? 'py-4' : 'md:pl-[150px]'}>
               <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
                 {program.hasDetails && program.image && (
                   <div className="w-32 h-24 relative rounded-md overflow-hidden">
@@ -82,10 +56,53 @@ const ProgramsSection = () => {
                 )}
                 
                 <div className={`flex-1 ${program.hasDetails ? '' : 'py-2'}`}>
-                  <h3 className="text-2xl md:text-3xl font-jedira-regular mb-1">{program.title}</h3>
-                  {program.description && (
-                    <p className="text-gray-400 max-w-2xl mb-2">{program.description}</p>
-                  )}
+                  <div className="flex items-center gap-2">
+                    <h3 
+                      className="text-2xl md:text-3xl font-jedira-regular mb-1 cursor-pointer hover:opacity-80 transition-opacity flex-1"
+                      onClick={() => handleTitleClick(program.id)}
+                    >
+                      {program.title}
+                    </h3>
+                    {program.description && (
+                      <motion.div
+                        animate={{ rotate: openProgramId === program.id ? 180 : 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="cursor-pointer"
+                        onClick={() => handleTitleClick(program.id)}
+                      >
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          className="h-6 w-6 text-gray-400"
+                          fill="none" 
+                          viewBox="0 0 24 24" 
+                          stroke="currentColor"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                        </svg>
+                      </motion.div>
+                    )}
+                  </div>
+                  <AnimatePresence>
+                    {openProgramId === program.id && program.description && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <motion.p 
+                          initial={{ y: -10, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -10, opacity: 0 }}
+                          transition={{ duration: 0.3, delay: 0.1 }}
+                          className="text-gray-400 max-w-2xl mt-3 mb-2"
+                        >
+                          {program.description}
+                        </motion.p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                   {program.hasDetails && (
                     <Link 
                       href={`/programs/${program.id}`} 
