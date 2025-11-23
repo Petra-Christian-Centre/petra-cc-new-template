@@ -54,7 +54,7 @@ export default function Home() {
       <ProgramsSection />
       <BooksSection />    
       <Sermons eyebrowText="SERMONS" title={['Latest', 'Messages ', 'From TPWMW']} subheading="Listen to the latest sermons from our church" sermonData={sermonData ?? []} />
-      <Global hasImage={false} />
+      <Global hasImage={true} />
     </main>
   );
 }
