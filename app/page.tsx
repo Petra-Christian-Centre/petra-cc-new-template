@@ -6,6 +6,8 @@ import ProgramsSection from '@/components/ProgramsSection';
 import BooksSection from '@/components/BooksSection';
 import Global from '@/components/Global';
 import type { Metadata } from "next";
+import Sermons from '@/components/Sermons';
+
 
 export const metadata: Metadata = {
   title: 'Tribe Petra Ministry World',
@@ -23,8 +25,9 @@ export default function Home() {
       <ImageSlider />
       <MissionsSection />
       <ProgramsSection />
-      <BooksSection />      
-      <Global hasImage={false} />
+      <BooksSection />    
+      <Sermons eyebrowText="SERMONS" title={['Latest', 'Messages ', 'From TPWMW']} subheading="Listen to the latest sermons from our church" />
+      <Global hasImage={true} />
     </main>
   );
 }

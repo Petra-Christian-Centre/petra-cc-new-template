@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Rain Conference",
+    "description": "Rain Conference is an annual event organized by Petra Christian Centre, aimed at empowering believers and fostering spiritual growth. It's typically focused on deepening understanding of faith, personal development, and spiritual renewal through teachings, worship sessions, and community-building activities. Rain Conference is more than an event; it's an awakening. Through impactful teachings, worship, and fellowship, we are creating an atmosphere where lives are transformed and purpose is revealed",
+    "image": "/Images/rcimage.png",
+    "nextDate": "July 2025",
+    "status": "next",
+    "hasDetails": true
+  },
+  {
+    "title": "Total Immersion",
+    "description": "Total Immersion is a transformative program designed to fully immerse participants in the Word of God and the presence of the Holy Spirit. This intensive experience takes believers on a journey of complete spiritual submersion, where every aspect of life is touched by divine truth. Through deep study, prayer, worship, and practical application, participants emerge with a renewed understanding of their identity in Christ and their purpose in the Kingdom.",
+    "image": "/Images/rcimage.png",
+    "nextDate": "Nov 3 2024",
+    "status": "next",
+    "hasDetails": true
+  },
+  {
+    "title": "Kindle",
+    "description": "Kindle is a powerful program focused on igniting the fire of God within believers. Just as a kindle sets a flame ablaze, this program is designed to rekindle passion, purpose, and spiritual fervor in the hearts of participants. Through dynamic teachings, worship, and fellowship, Kindle creates an atmosphere where the embers of faith are fanned into a roaring fire, empowering believers to walk in their calling with renewed zeal and commitment.",
+    "image": "/Images/rcimage.png",
+    "nextDate": "Coming Soon",
+    "status": "next",
+    "hasDetails": true
+  },
+  {
+    "title": "The Festival",
+    "description": "The Festival is a grand celebration of God's goodness, grace, and faithfulness. This vibrant event brings together believers from all walks of life for a time of joyous worship, powerful testimonies, and divine encounters. It's a time to celebrate what God has done, is doing, and will do in the lives of His people. Through music, dance, praise, and the Word, The Festival creates an atmosphere of celebration that leaves participants refreshed, encouraged, and filled with hope.",
+    "image": "/Images/rcimage.png",
+    "nextDate": "Coming Soon",
+    "status": "next",
+    "hasDetails": true
+  },
+  {
+    "title": "Look & Live",
+    "description": "Look & Live is a life-changing program based on the biblical principle of looking to Jesus for salvation and transformation. This program teaches believers to fix their gaze on Christ, the author and finisher of their faith, and experience the life that flows from that connection. Through powerful teachings on faith, healing, and deliverance, participants learn to look beyond their circumstances and see the promises of God, resulting in a life of victory, purpose, and divine fulfillment.",
+    "image": "/Images/rcimage.png",
+    "nextDate": "Coming Soon",
+    "status": "next",
+    "hasDetails": true
+  },
+  {
+    "title": "Tribe Petra School of Ministry",
+    "description": "Tribe Petra School of Ministry is a comprehensive training program designed to equip believers for effective ministry and service in the Kingdom of God. This school provides in-depth biblical education, practical ministry training, and character development for those called to serve. Through structured courses, mentorship, and hands-on experience, students are prepared to impact their communities and fulfill their God-given assignments with excellence, integrity, and the power of the Holy Spirit.",
+    "image": "/Images/rcimage.png",
+    "nextDate": "Happening Now",
+    "status": "active",
+    "hasDetails": true
+  }
+]
+

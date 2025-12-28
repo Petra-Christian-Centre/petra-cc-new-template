@@ -102,7 +102,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${jediraRegular.variable} ${jediraItalic.variable} ${inter.variable} antialiased`}
       >
-        <div className="md:px-[72px] md:pt-11">
+        <div className="md:px-[72px]">
           <Navbar />
         </div>
         <main className="min-h-screen">

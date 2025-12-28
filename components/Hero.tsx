@@ -105,7 +105,7 @@ const Hero = () => {
 
           <div className='w-full h-full flex'>
             <div className='space-y-4'>
-              <div className="relative w-[272px] h-[273px] bg-[#4A4A4A] rounded-3xl p-4">
+              <Link href="#sermons" className="relative w-[272px] h-[273px] bg-[#4A4A4A] rounded-3xl p-4 block cursor-pointer hover:opacity-90 transition-opacity">
                 <div className='flex justify-between items-center'>                  
                   <div className="">
                     
@@ -116,12 +116,12 @@ const Hero = () => {
                 </span>                   
                 </div>
                             
-                <Link href="/" className="absolute bottom-4 text-white text-2xl font-medium">
+                <span className="absolute bottom-4 text-white text-2xl font-medium">
                   Latest<br />Sermon
-                </Link>
-              </div>
+                </span>
+              </Link>
               
-              <div className="relative w-[272px] h-[273px] bg-[#E86C4F] rounded-3xl p-4">
+              <Link href="#sermons" className="relative w-[272px] h-[273px] bg-[#E86C4F] rounded-3xl p-4 block cursor-pointer hover:opacity-90 transition-opacity">
                 <div className='flex justify-between items-center'>                  
                   <div className="">
                     
@@ -132,10 +132,10 @@ const Hero = () => {
                 </span>                   
                 </div>
                             
-                <Link href="/" className="absolute bottom-4 text-white text-2xl font-medium">
+                <span className="absolute bottom-4 text-white text-2xl font-medium">
                   Latest<br />Sermon
-                </Link>
-              </div>
+                </span>
+              </Link>
             </div>
           </div>
         </div>
