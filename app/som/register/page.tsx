@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -50,6 +49,12 @@ export default function SomRegisterPage() {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [form, setForm] = useState(initialForm);
+
+  const maxDobDate = (() => {
+    const date = new Date();
+    date.setFullYear(date.getFullYear() - 18);
+    return date.toISOString().split("T")[0];
+  })();
   const [sessions, setSessions] = useState<SomSession[]>([]);
   const [isLoadingSessions, setIsLoadingSessions] = useState(true);
   const [passportFile, setPassportFile] = useState<File | null>(null);
@@ -119,6 +124,21 @@ export default function SomRegisterPage() {
     if (step === 1) {
       if (!form.session) {
         setError("Please select the cohort you are applying for.");
+        return;
+      }
+      if (!form.dob) {
+        setError("Please enter your date of birth.");
+        return;
+      }
+      const dobDate = new Date(form.dob);
+      const today = new Date();
+      let age = today.getFullYear() - dobDate.getFullYear();
+      const monthDiff = today.getMonth() - dobDate.getMonth();
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
+        age--;
+      }
+      if (age < 18) {
+        setError("You must be 18 years or older to register.");
         return;
       }
       if (!passportFile) {
@@ -212,7 +232,7 @@ export default function SomRegisterPage() {
               <SomField label="Other Names" name="otherNames" value={form.otherNames} onChange={updateField} required />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <SomField label="Date of Birth" name="dob" type="date" value={form.dob} onChange={updateField} required />
+              <SomField label="Date of Birth" name="dob" type="date" value={form.dob} onChange={updateField} max={maxDobDate} required />
               <SomSelect label="Marital Status" name="maritalStatus" value={form.maritalStatus} onChange={updateField} required>
                 <option>Single</option>
                 <option>Married</option>
@@ -307,9 +327,7 @@ export default function SomRegisterPage() {
               <span onClick={() => setStep(1)}>Back</span>
             </SomButton>
           ) : (
-            <Link href="/office/login" className="text-sm text-[#525866] underline">
-              Admin login
-            </Link>
+            <div />
           )}
           <SomButton type="submit" disabled={isSubmitting || isLoadingSessions || !sessions.length}>
             {isSubmitting ? "Submitting..." : step === 1 ? "Continue" : "Register Now"}

@@ -93,12 +93,6 @@ function SomNav() {
 
         <nav className="flex items-center gap-2.5">
           <Link
-            href="/office/login"
-            className="rounded-[10px] bg-white px-4 py-2.5 text-sm font-medium leading-5 tracking-[-0.084px] text-[#4c5a85] shadow-[0_1px_3px_rgba(14,18,27,0.12),0_0_0_1px_#e1e4ea]"
-          >
-            Login
-          </Link>
-          <Link
             href="/som/register"
             className="rounded-[10px] border border-white/10 bg-primary px-4 py-2.5 text-sm font-medium leading-5 tracking-[-0.084px] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
           >

@@ -119,6 +119,7 @@ export function SomField({
   onChange,
   required,
   placeholder,
+  max,
 }: {
   label: string;
   name: string;
@@ -127,6 +128,7 @@ export function SomField({
   onChange: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => void;
   required?: boolean;
   placeholder?: string;
+  max?: string;
 }) {
   return (
     <label className="block">
@@ -138,6 +140,7 @@ export function SomField({
         required={required}
         placeholder={placeholder}
         onChange={onChange}
+        max={max}
         className="mt-1 w-full rounded-[10px] border border-[#e1e4ea] bg-white px-3 py-2.5 text-sm outline-none shadow-[0_1px_2px_rgba(10,13,20,0.03)] focus:border-primary"
       />
     </label>
