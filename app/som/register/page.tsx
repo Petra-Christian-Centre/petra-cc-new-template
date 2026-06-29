@@ -18,6 +18,7 @@ import {
   type SomSession,
 } from "@/lib/somApi";
 
+import Image from 'next/image';
 const initialForm: SomRegistrationPayload = {
   session: "",
   email: "",
@@ -237,7 +238,7 @@ export default function SomRegisterPage() {
             </label>
             {passportPreview && (
               <div className="flex items-center gap-3 rounded-[10px] border border-[#e1e4ea] bg-[#fafafa] p-3">
-                <img src={passportPreview} alt="Passport preview" className="size-20 rounded-md object-cover" />
+                <Image src="{passportPreview}" alt="Passport preview" className="size-20 rounded-md object-cover" />
                 <div className="text-sm text-[#525866]">
                   <p className="font-medium text-[#0e121b]">{passportFile?.name}</p>
                   <p>Photo will be uploaded when you submit the form.</p>
