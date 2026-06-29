@@ -27,7 +27,7 @@ export default function HomeHero() {
                 Be a part of Tribe Petra School of Ministry                
               </p>
               <Link 
-                href="/apply"
+                href="/som"
                 className="ml-3 bg-white text-black font-bold transition-colors"
               >
                 Apply Now

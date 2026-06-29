@@ -5,10 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+// @ts-ignore
 import 'swiper/css';
+// @ts-ignore
 import 'swiper/css/navigation';
 
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function SermonSlider({sermonData}: {sermonData: any[]}) {
   return (
     <div className="relative overflow-hidden">

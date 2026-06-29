@@ -26,7 +26,7 @@ const Hero = () => {
               </span>
 
               <Link 
-                href="/apply"
+                href="/som"
                 className="w-full bg-white text-center rounded-[32px] p-2 flex items-center justify-center"
               >
                   <span className='font-semibold'>Apply Now</span>
@@ -41,7 +41,7 @@ const Hero = () => {
               </span>
               
               <Link 
-                href="/apply"
+                href="/som"
                 className="inline-flex items-center font-semibold bg-white hover:bg-gray-50 text-black font-medium px-6 py-2 rounded-full transition-colors"
               >
                 Apply Now

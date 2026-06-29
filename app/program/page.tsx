@@ -2,7 +2,6 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import programhero from "@/public/Images/programhero.png";
 import { LuCalendarRange } from "react-icons/lu";
