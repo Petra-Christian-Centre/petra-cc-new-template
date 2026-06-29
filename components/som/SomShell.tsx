@@ -75,7 +75,7 @@ export function SomTopNav({ dark = false }: { dark?: boolean }) {
       <div className="mx-auto flex h-[100px] w-full max-w-[1440px] items-center justify-between px-6 sm:px-12 lg:px-[101px]">
         <SomLogo dark={dark} />
         <nav className="flex items-center gap-2.5">
-          <SomButton href="/office/login" variant="secondary">
+          <SomButton href="/som/login" variant="secondary">
             Login
           </SomButton>
           <SomButton href="/som/register">Get Started</SomButton>

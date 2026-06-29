@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -17,7 +18,6 @@ import {
   type SomSession,
 } from "@/lib/somApi";
 
-import Image from 'next/image';
 const initialForm: SomRegistrationPayload = {
   session: "",
   email: "",
@@ -52,7 +52,7 @@ export default function SomRegisterPage() {
 
   const maxDobDate = (() => {
     const date = new Date();
-    date.setFullYear(date.getFullYear() - 18);
+    date.setFullYear(date.getFullYear() - 16);
     return date.toISOString().split("T")[0];
   })();
   const [sessions, setSessions] = useState<SomSession[]>([]);
@@ -137,8 +137,8 @@ export default function SomRegisterPage() {
       if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dobDate.getDate())) {
         age--;
       }
-      if (age < 18) {
-        setError("You must be 18 years or older to register.");
+      if (age < 17) {
+        setError("You must be 17 years or older to register.");
         return;
       }
       if (!passportFile) {
@@ -258,7 +258,14 @@ export default function SomRegisterPage() {
             </label>
             {passportPreview && (
               <div className="flex items-center gap-3 rounded-[10px] border border-[#e1e4ea] bg-[#fafafa] p-3">
-                <Image src="{passportPreview}" alt="Passport preview" className="size-20 rounded-md object-cover" />
+                <Image
+                  src={passportPreview}
+                  alt="Passport preview"
+                  width={80}
+                  height={80}
+                  unoptimized
+                  className="size-20 rounded-md object-cover"
+                />
                 <div className="text-sm text-[#525866]">
                   <p className="font-medium text-[#0e121b]">{passportFile?.name}</p>
                   <p>Photo will be uploaded when you submit the form.</p>
@@ -333,6 +340,12 @@ export default function SomRegisterPage() {
             {isSubmitting ? "Submitting..." : step === 1 ? "Continue" : "Register Now"}
           </SomButton>
         </div>
+        <p className="mt-5 text-center text-sm text-[#525866]">
+          Already registered?{" "}
+          <a href="/som/login" className="font-medium underline">
+            Login to your student dashboard
+          </a>
+        </p>
       </form>
     </SomShell>
   );

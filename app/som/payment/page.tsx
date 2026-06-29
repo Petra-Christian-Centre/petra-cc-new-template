@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import { SomButton, SomField, SomShell } from "@/components/som/SomShell";
@@ -20,7 +21,9 @@ function SomPaymentContent() {
   const [payments, setPayments] = useState<SomPayment[]>([]);
   const [candidate, setCandidate] = useState("");
   const [message, setMessage] = useState(
-    searchParams.get("registered") ? "Registration complete. Use your student code below to track payment." : ""
+    searchParams.get("registered")
+      ? "Registration complete. Use the email and student code below to verify your payment details. You can also use them to log in to your student dashboard anytime."
+      : ""
   );
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +69,7 @@ function SomPaymentContent() {
       <section className="w-full max-w-[520px] rounded-[20px] border border-[#f0f0f0] bg-white p-6 shadow-sm sm:p-8">
         <h1 className="text-2xl font-medium leading-8">SOM payment</h1>
         <p className="mt-1 text-base leading-6 text-[#525866]">
-          Check outstanding tuition and use your reference when making a transfer.
+          Verify your payment details and use your reference when making a transfer.
         </p>
 
         <form onSubmit={lookup} className="mt-6 grid gap-4">
@@ -96,6 +99,18 @@ function SomPaymentContent() {
             <div className="rounded-xl bg-[#f7f7f7] p-4 text-sm leading-6 text-[#525866]">
               Transfer to PETRA LEADERSHIP COLLEGE, GTBank 0212410636, then send proof of payment with
               your registered name and student code to the SOM contact.
+            </div>
+            <div className="rounded-xl border border-[#e1e4ea] bg-white p-4 text-sm leading-6 text-[#525866]">
+              Keep your student code safe. You can log in with this email and code to view your dashboard,
+              payment status, and admission updates.
+              <div className="mt-3">
+                <Link
+                  href={`/som/login?${new URLSearchParams({ email, code }).toString()}`}
+                  className="font-medium text-[#0e121b] underline"
+                >
+                  Go to student login
+                </Link>
+              </div>
             </div>
           </div>
         )}

@@ -86,6 +86,7 @@ export type SomRegistration = {
   surname: string;
   otherNames: string;
   email: string;
+  session?: string;
   phoneNumber: string;
   address?: string;
   occupation?: string;
@@ -132,6 +133,21 @@ export type SomRegistration = {
   }>;
 };
 
+export type SomStudentDashboard = {
+  registration: SomRegistration;
+  sessionStatus: {
+    isActive: boolean;
+    canRegister: boolean;
+    session?: string;
+    startDate?: string | null;
+    endDate?: string | null;
+    venue?: string | null;
+    location?: string | null;
+  };
+  paymentData: NonNullable<SomRegistration["paymentData"]>;
+  messages: NonNullable<SomRegistration["messages"]>;
+};
+
 const getApiBase = () => {
   const url = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://127.0.0.1:1337/api";
   const trimmed = url.replace(/\/$/, "");
@@ -146,6 +162,7 @@ const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/dazocl67q/upload"
 const CLOUDINARY_UPLOAD_PRESET = "tmi-passport";
 export const OFFICE_TOKEN_KEY = "officeAuthToken";
 export const OFFICE_USER_KEY = "officeAuthUser";
+export const SOM_STUDENT_SESSION_KEY = "somStudentSession";
 export const FLW_PUBLIC_KEY = process.env.NEXT_PUBLIC_FLW_PUBLIC_KEY || "";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
@@ -205,6 +222,11 @@ export function getOutstandingSomPayments(email: string, code: string) {
       }>;
     };
   }>(`/som-api/get-outstanding-payments?${params.toString()}`);
+}
+
+export function getSomStudentDashboard(email: string, code: string) {
+  const params = new URLSearchParams({ email, code });
+  return request<{ data: SomStudentDashboard }>(`/som-api/student-dashboard?${params.toString()}`);
 }
 
 export function loginSomAdmin(identifier: string, password: string) {

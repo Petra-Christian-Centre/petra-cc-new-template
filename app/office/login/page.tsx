@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SomButton, SomField, SomShell } from "@/components/som/SomShell";
 import { loginSomAdmin, OFFICE_TOKEN_KEY, OFFICE_USER_KEY } from "@/lib/somApi";
@@ -12,6 +12,13 @@ export default function OfficeLoginPage() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem(OFFICE_TOKEN_KEY) || localStorage.getItem("somAdminToken");
+    if (storedToken) {
+      router.replace("/office/registrations");
+    }
+  }, [router]);
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();

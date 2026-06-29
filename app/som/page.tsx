@@ -93,6 +93,12 @@ function SomNav() {
 
         <nav className="flex items-center gap-2.5">
           <Link
+            href="/som/login"
+            className="rounded-[10px] bg-white px-4 py-2.5 text-sm font-medium leading-5 tracking-[-0.084px] text-[#525866] shadow-[0_1px_3px_rgba(14,18,27,0.12),0_0_0_1px_#e1e4ea]"
+          >
+            Login
+          </Link>
+          <Link
             href="/som/register"
             className="rounded-[10px] border border-white/10 bg-primary px-4 py-2.5 text-sm font-medium leading-5 tracking-[-0.084px] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
           >
@@ -143,7 +149,13 @@ export default function SchoolOfMinistryPage() {
             An immersive two-week training program designed to equip ministers and gospel workers with
             essential skills, biblical foundation, and practical ministry experience.
           </p>
-          <div className="mt-8 flex items-center gap-2.5">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-2.5">
+            <Link
+              href="/som/login"
+              className="rounded-[10px] bg-white px-4 py-2.5 text-sm font-medium leading-5 tracking-[-0.084px] text-[#525866] shadow-[0_1px_3px_rgba(14,18,27,0.12),0_0_0_1px_#e1e4ea]"
+            >
+              Student Login
+            </Link>
             <Link
               href="/som/register"
               className="rounded-[10px] border border-white/10 bg-primary px-4 py-2.5 text-sm font-medium leading-5 tracking-[-0.084px] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.16)]"
