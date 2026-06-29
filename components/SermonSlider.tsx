@@ -5,9 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
-// @ts-expect-error
 import 'swiper/css';
-// @ts-expect-error
 import 'swiper/css/navigation';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

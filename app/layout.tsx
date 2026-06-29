@@ -1,9 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import localFont from 'next/font/local';
-// TypeScript may complain about missing type declarations for CSS imports in this repo setup.
-// Ignore that error for this side-effect import.
-// @ts-expect-error
 import "./globals.css";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
