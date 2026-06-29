@@ -132,11 +132,21 @@ export type SomRegistration = {
   }>;
 };
 
-const API_BASE = (process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://127.0.0.1:1337/api").replace(/\/$/, "");
+const getApiBase = () => {
+  const url = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://127.0.0.1:1337/api";
+  const trimmed = url.replace(/\/$/, "");
+  if (!trimmed.endsWith("/api")) {
+    return `${trimmed}/api`;
+  }
+  return trimmed;
+};
+
+const API_BASE = getApiBase();
 const CLOUDINARY_UPLOAD_URL = "https://api.cloudinary.com/v1_1/dazocl67q/upload";
 const CLOUDINARY_UPLOAD_PRESET = "tmi-passport";
 export const OFFICE_TOKEN_KEY = "officeAuthToken";
 export const OFFICE_USER_KEY = "officeAuthUser";
+export const FLW_PUBLIC_KEY = process.env.NEXT_PUBLIC_FLW_PUBLIC_KEY || "";
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   const response = await fetch(`${API_BASE}${path}`, {
