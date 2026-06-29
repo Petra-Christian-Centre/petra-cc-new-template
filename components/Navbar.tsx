@@ -2,11 +2,17 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import petralogo from "@/public/Images/petra.png";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  if (pathname.startsWith("/som") || pathname.startsWith("/office")) {
+    return null;
+  }
 
   return (
     <nav className="relative z-50">

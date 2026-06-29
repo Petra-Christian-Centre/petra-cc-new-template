@@ -1,9 +1,18 @@
+'use client';
+
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import petrafooter from '@/public/Images/petrafooter.png';
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  if (pathname.startsWith('/som') || pathname.startsWith('/office')) {
+    return null;
+  }
+
   return (
     <footer className="bg-black text-white py-20 mt-64 relative overflow-hidden">
       {/* Logo Section - Large background logo */}

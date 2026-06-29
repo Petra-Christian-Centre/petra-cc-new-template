@@ -1,0 +1,113 @@
+"use client";
+
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
+import { SomButton, SomField, SomShell } from "@/components/som/SomShell";
+import { getOutstandingSomPayments, type SomPayment } from "@/lib/somApi";
+
+function formatMoney(amount: string | number, currency = "NGN") {
+  return new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0,
+  }).format(Number(amount || 0));
+}
+
+function SomPaymentContent() {
+  const searchParams = useSearchParams();
+  const [email, setEmail] = useState(searchParams.get("email") || "");
+  const [code, setCode] = useState(searchParams.get("code") || "");
+  const [payments, setPayments] = useState<SomPayment[]>([]);
+  const [candidate, setCandidate] = useState("");
+  const [message, setMessage] = useState(
+    searchParams.get("registered") ? "Registration complete. Use your student code below to track payment." : ""
+  );
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  async function lookupPayments(nextEmail = email, nextCode = code) {
+    setError("");
+    setMessage("");
+    setIsLoading(true);
+
+    try {
+      const result = await getOutstandingSomPayments(nextEmail, nextCode);
+      setPayments(result.data.outstandingPayments);
+      setCandidate(`${result.data.candidateData.surname} ${result.data.candidateData.otherNames}`);
+      if (!result.data.outstandingPayments.length) {
+        setMessage("No outstanding payment found for this registration.");
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to find registration");
+      setPayments([]);
+      setCandidate("");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function lookup(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    await lookupPayments();
+  }
+
+  useEffect(() => {
+    const queryEmail = searchParams.get("email");
+    const queryCode = searchParams.get("code");
+
+    if (queryEmail && queryCode) {
+      lookupPayments(queryEmail, queryCode);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <SomShell>
+      <section className="w-full max-w-[520px] rounded-[20px] border border-[#f0f0f0] bg-white p-6 shadow-sm sm:p-8">
+        <h1 className="text-2xl font-medium leading-8">SOM payment</h1>
+        <p className="mt-1 text-base leading-6 text-[#525866]">
+          Check outstanding tuition and use your reference when making a transfer.
+        </p>
+
+        <form onSubmit={lookup} className="mt-6 grid gap-4">
+          {message && <div className="rounded-[10px] border border-green-200 bg-green-50 px-3 py-2 text-sm text-green-800">{message}</div>}
+          {error && <div className="rounded-[10px] border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">{error}</div>}
+          <SomField label="Email Address" name="email" type="email" value={email} onChange={(event) => setEmail(event.target.value)} required />
+          <SomField label="Student Code" name="code" value={code} onChange={(event) => setCode(event.target.value)} required />
+          <SomButton type="submit" disabled={isLoading}>
+            {isLoading ? "Checking..." : "Check Payments"}
+          </SomButton>
+        </form>
+
+        {!!payments.length && (
+          <div className="mt-8 space-y-4">
+            <h2 className="text-lg font-medium">Outstanding for {candidate}</h2>
+            {payments.map((payment) => (
+              <div key={payment.id || payment.reference} className="rounded-xl border border-[#e1e4ea] p-4">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <p className="font-medium">{payment.description}</p>
+                    <p className="mt-1 text-sm text-[#525866]">Reference: {payment.reference}</p>
+                  </div>
+                  <p className="font-semibold">{formatMoney(payment.amount, payment.currency)}</p>
+                </div>
+              </div>
+            ))}
+            <div className="rounded-xl bg-[#f7f7f7] p-4 text-sm leading-6 text-[#525866]">
+              Transfer to PETRA LEADERSHIP COLLEGE, GTBank 0212410636, then send proof of payment with
+              your registered name and student code to the SOM contact.
+            </div>
+          </div>
+        )}
+      </section>
+    </SomShell>
+  );
+}
+
+export default function SomPaymentPage() {
+  return (
+    <Suspense fallback={null}>
+      <SomPaymentContent />
+    </Suspense>
+  );
+}
