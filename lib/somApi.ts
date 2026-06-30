@@ -204,13 +204,24 @@ export function registerSomStudent(data: SomRegistrationPayload) {
 }
 
 export function getOutstandingSomPayments(email: string, code: string) {
-  const params = new URLSearchParams({ email, code });
+  const params = new URLSearchParams();
+  if (email) {
+    params.set("email", email);
+  }
+  if (code) {
+    params.set("code", code);
+  }
+
   return request<{
     data: {
       candidateData: {
         surname: string;
         otherNames: string;
         phoneNumber: string;
+        email: string;
+        code: string;
+        session?: string;
+        contact?: string | null;
       };
       outstandingPayments: SomPayment[];
       transactions: Array<{
